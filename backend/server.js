@@ -1,10 +1,15 @@
 const express = require("express")
-const dotenv = require("dotenv").config()
+require("dotenv").config()
+const cors = require("cors")
 const port = process.env.PORT || 4000
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 
-app.listen(port, ()=> console.log(`server running on ${port}`))
+
+app.use("/api/events" , require('./routes/eventRoutes'))
+
+app.listen(4000, ()=> console.log(`server running on ${port}`))
