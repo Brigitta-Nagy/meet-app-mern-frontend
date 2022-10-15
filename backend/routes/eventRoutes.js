@@ -10,7 +10,7 @@ router.get("/", async (req, res)=> {
   res.status(200).json(events)
 })
 
-router.post("/", asyncHandler(async (req, res)=> {
+router.post("/create", asyncHandler(async (req, res)=> {
   if (!req.body.title || !req.body.city || !req.body.address || !req.body.date || !req.body.time || !req.body.description || !req.body.participants) {
     res.status(400)
     throw new Error("Please add all the details")
