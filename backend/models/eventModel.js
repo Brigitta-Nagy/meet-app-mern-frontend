@@ -8,7 +8,7 @@ const eventSchema = new mongoose.Schema ({
   address: 
     {type: String, required: [true, 'Please add exact address']}, 
   date: 
-    {type: Date, required: [true, 'Please add date']},
+    {type: Date, required: [false, 'Please add date']},
   time: 
     {type: String, required: [true, 'Please add time']},
   description: 

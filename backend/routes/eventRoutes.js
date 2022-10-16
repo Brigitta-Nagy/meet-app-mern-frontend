@@ -24,8 +24,9 @@ router.post("/create", asyncHandler(async (req, res)=> {
    description: req.body.description,
    participants: req.body.participants
   })
-  console.log(req.body)
+  
   res.status(200).json(event)
+  console.log(event)
 }))
 
 router.put("/:id", asyncHandler(async (req, res)=> {

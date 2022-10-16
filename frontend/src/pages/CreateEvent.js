@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {useNavigate} from "react-router-dom"
@@ -17,8 +17,6 @@ function CreateEvent() {
   })
 
   const handleChange = (e) =>{
-console.log(e.target)
-
     const {name, value} = e.target;
     setEvent((prev)=>{
       return {
@@ -28,6 +26,9 @@ console.log(e.target)
       
     })
   }
+  useEffect(()=>{
+    console.log(event)
+  }, [event])
 
   const createEvent = (e)=> {
     e.preventDefault();
@@ -41,18 +42,20 @@ console.log(e.target)
     description:event.description
 
     }
+    
     axios
-    .post('http://localhost:4000/login/events/create', event)
+    .post('/create', event)
     .then((res)=>{ 
       console.log(res)
       newEvent.save()})
     .catch((err)=>{
       console.log(err)})
     navigate(-1)
+    
   }
 
   return (
-    <div>
+    <div className='createEventContainer'>
       <h1>Create Your Event</h1>
         <Form>
           <Form.Group className="mb-2 container" >
@@ -85,7 +88,9 @@ console.log(e.target)
             <Form.Control className="mb-2"
             name='participants'
             value={event.participants}
-            placeholder='max. participants' onChange={handleChange}/>
+            placeholder='max. participants' onChange={handleChange}
+            type="number"/>
+
             <label for="exampleFormControlTextarea1"></label>
 
             <textarea className="form-control" 
@@ -97,9 +102,9 @@ console.log(e.target)
 
 
           </Form.Group>
-          <Button onClick={createEvent}>Create Event</Button>
+          <Button variant="outline-info m-1" onClick={createEvent}>Create Event</Button>
         </Form>
-      <Button onClick={()=>navigate(-1)}>Back</Button>
+      <Button variant="outline-info m-1" onClick={()=>navigate(-1)}>Back</Button>
 
     </div>
   );
