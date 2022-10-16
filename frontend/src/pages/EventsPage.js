@@ -40,13 +40,14 @@ function EventsPage() {
       <p>Location: {event.city}<br/>
       Exact address: {event.address}<br/>
       Date and time: {event.date}, {event.time} <br/>
-      More details: {event.description}</p>
+      More details: {event.description}<br/>
+      max. participants: {event.participants}</p>
 
       <div className="d-flex justify-content-between m-1"
       
       >
         <Button className="btn  btn-sm"
-           variant="outline-info m-1"
+           variant="outline-success m-1"
           // onClick={() =>
           //   updatePost(post._id, post.title, post.description)
           // }
@@ -69,7 +70,7 @@ function EventsPage() {
       </>
   ):("")}
 
-     <Button variant="outline-info m-1" onClick={()=>navigate("create")}>Create Event</Button>
+     <Button variant="outline-success m-1" onClick={()=>navigate("create")}>Create Event</Button>
   </div>
 
 );}
