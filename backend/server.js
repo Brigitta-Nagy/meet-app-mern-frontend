@@ -6,19 +6,18 @@ const connectDB = require("./connection")
 const asyncHandler = require("express-async-handler")
 const Event = require ("./models/eventModel")
 
-
-
-
 connectDB()
 const app = express()
 
 app.use(cors())
 app.use(express.json())
-// app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
 
-// app.use("/api/events" , require('./routes/eventRoutes'))
-app.post("/create",  (req, res)=> {
+ app.use("/api/events" , require('./routes/eventRoutes'))
+  app.use('/api/users', require("./routes/userRoutes"))
+
+  app.post("/create",  (req, res)=> {
  Event.create({
   title: req.body.title,
    city: req.body.city,

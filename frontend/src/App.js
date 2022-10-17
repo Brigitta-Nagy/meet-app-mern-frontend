@@ -27,7 +27,7 @@ function App() {
             <Route path='/login/events' element ={<EventsPage/>}/>
         </Routes>
         <Routes>
-            <Route path='/login/events/create' element ={<CreateEvent/>}/>
+            <Route path='create' element ={<CreateEvent/>}/>
         </Routes>
      </Router>
     </>
