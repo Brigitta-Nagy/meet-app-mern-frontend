@@ -28,3 +28,20 @@ body {
   margin: 0 auto;
   text-align: center;
 }
+
+.logoPic{
+  width: 40px;
+  height: 40px;
+}
+
+.header{
+  padding: 20px;
+}
+
+header ul{
+  display: flex;
+  list-style: none;
+}
+header li{
+  padding: 10px;
+}

@@ -1,13 +1,36 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 function Signup() {
+  const [signUpData, setSignUpData] = useState({
+    name:"", 
+    email:"", 
+    password: "", 
+    password2: "",
+  })
+
+  const {name, email, password, password2} = signUpData
+
+  const onChange = (e) => {
+    setSignUpData((prevState)=> ({
+      ...prevState, 
+      [e.target.name]:e.target.value,
+    }))
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+  }
   return (
-    <form className='container'>
+    <form onSubmit={onSubmit} className='container'>
     <h3>Sign Up</h3>
     <div className="mb-3">
       <label>Username</label>
       <input
         type="text"
+        id="name"
+        name="name"
+        value="name"
+        onChange={onChange}
         className="form-control"
         placeholder="Username"
       />
@@ -16,14 +39,22 @@ function Signup() {
       <label>Email address</label>
       <input
         type="email"
+        id="email"
+        name="email"
+        value="email"
+        onChange={onChange}
         className="form-control"
-        placeholder="Enter email"
+        placeholder="Enter your email"
       />
     </div>
     <div className="mb-3">
       <label>Password</label>
       <input
         type="password"
+        id="password"
+        name="password"
+        value="password"
+        onChange={onChange}
         className="form-control"
         placeholder="Enter password"
       />
@@ -32,6 +63,9 @@ function Signup() {
       <label>Confirm password</label>
       <input
         type="password"
+        id="password2"
+        name="password2"
+        value="password2"
         className="form-control"
         placeholder="Confirm password"
       />
