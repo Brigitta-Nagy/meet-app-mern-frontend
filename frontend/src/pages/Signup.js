@@ -1,17 +1,17 @@
 import React, {useState} from 'react'
 
 function Signup() {
-  const [signUpData, setSignUpData] = useState({
+  const [signupData, setSignupData] = useState({
     name:"", 
     email:"", 
     password: "", 
     password2: "",
   })
 
-  const {name, email, password, password2} = signUpData
+  const {name, email, password, password2} = signupData
 
   const onChange = (e) => {
-    setSignUpData((prevState)=> ({
+    setSignupData((prevState)=> ({
       ...prevState, 
       [e.target.name]:e.target.value,
     }))
@@ -29,7 +29,7 @@ function Signup() {
         type="text"
         id="name"
         name="name"
-        value="name"
+        value={name}
         onChange={onChange}
         className="form-control"
         placeholder="Username"
@@ -41,7 +41,7 @@ function Signup() {
         type="email"
         id="email"
         name="email"
-        value="email"
+        value={email}
         onChange={onChange}
         className="form-control"
         placeholder="Enter your email"
@@ -53,7 +53,7 @@ function Signup() {
         type="password"
         id="password"
         name="password"
-        value="password"
+        value={password}
         onChange={onChange}
         className="form-control"
         placeholder="Enter password"
@@ -65,7 +65,8 @@ function Signup() {
         type="password"
         id="password2"
         name="password2"
-        value="password2"
+        value={password2}
+        onChange={onChange}
         className="form-control"
         placeholder="Confirm password"
       />

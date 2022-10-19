@@ -3,19 +3,18 @@ import CreateEvent from "./pages/CreateEvent";
 import EventsPage from './pages/EventsPage';
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
-import Main from "./pages/Main"
+import Home  from "./pages/Home"
 import Navbar from "./components/Navbar"
 
 
 function App() {
-
-  return (
+   return (
     <>
     <Router>
       <Navbar />
    
          <Routes>
-            <Route path='/' element ={<Main/>}/>
+            <Route path='/' element ={<Home/>}/>
         </Routes>
         <Routes>
             <Route path='/login' element ={<Login/>}/>

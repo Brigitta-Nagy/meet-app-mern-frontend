@@ -1,11 +1,24 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import { useState } from "react";
 import CreateEvent from "./CreateEvent";
 import EventsPage from './EventsPage';
-import {Link, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 
 
 function Login() {
+  const [loginData, setLoginData] = useState({
+    email:"", 
+    password: "", 
+  })
+  const {email, password} = loginData
+
+  const onChange = (e)=>{
+    setLoginData((prevState) => ({
+      ...prevState, 
+      [e.target.name]:e.target.value,
+    }))
+  }
   const navigate = useNavigate()
   return ( 
 

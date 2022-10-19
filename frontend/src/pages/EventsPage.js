@@ -70,7 +70,7 @@ function EventsPage() {
       </>
   ):("")}
 
-     <Button variant="outline-success m-1" onClick={()=>navigate("create")}>Create Event</Button>
+     <Button variant="outline-success m-1" onClick={()=>navigate("/create")}>Create Event</Button>
   </div>
 
 );}
