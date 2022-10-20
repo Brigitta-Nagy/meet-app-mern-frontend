@@ -1,8 +1,10 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CreateEvent from "./CreateEvent";
 import EventsPage from './EventsPage';
 import {useNavigate} from "react-router-dom"
+import { useSelector, useDispatch } from 'react-redux'
+import { login, reset } from '../features/auth/authSlice'
 
 
 
@@ -13,13 +15,51 @@ function Login() {
   })
   const {email, password} = loginData
 
-  const onChange = (e)=>{
-    setLoginData((prevState) => ({
-      ...prevState, 
-      [e.target.name]:e.target.value,
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  // const onChange = (e)=>{
+  //   setLoginData((prevState) => ({
+  //     ...prevState, 
+  //     [e.target.name]:e.target.value,
+  //   }))
+  // }
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
+
+  useEffect(() => {
+    if (isError) {
+      console.error(message);
+    }
+
+    if (isSuccess || user) {
+      navigate('/')
+    }
+
+    dispatch(reset())
+  }, [user, isError, isSuccess, message, navigate, dispatch])
+
+  const onChange = (e) => {
+    loginData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
     }))
   }
-  const navigate = useNavigate()
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    const userData = {
+      email,
+      password,
+    }
+
+    dispatch(login(userData))
+  }
+
+ 
+
   return ( 
 
     <form className="container">
@@ -30,7 +70,11 @@ function Login() {
         type="email"
         className="form-control"
         placeholder="Enter email"
-      />
+        id='email'
+        name='email'
+        value={email}
+        onChange={onChange}
+      />         
     </div>
     <div className="mb-3">
       <label>Password</label>
@@ -38,6 +82,10 @@ function Login() {
         type="password"
         className="form-control"
         placeholder="Enter password"
+        id='password'
+        name='password'
+        value={password}
+        onChange={onChange}
       />
     </div>
     <div className="mb-3">

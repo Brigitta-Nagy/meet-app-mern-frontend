@@ -3,12 +3,13 @@ import axios from "axios"
 import React, {useState, useEffect} from "react"
 import {Link, useNavigate} from "react-router-dom"
 import {Button} from "react-bootstrap"
+import {useSelector} from 'react-redux'
 
 
 function EventsPage() {
   const [events, setEvents] = useState([])
   const navigate = useNavigate()
-
+  const {user} = useSelector((state) => state.auth)
   useEffect(() => {
     axios.get("/events")
     .then((res)=>{

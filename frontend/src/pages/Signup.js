@@ -1,4 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
+import {register, reset} from '../features/auth/authSlice'
+
 
 function Signup() {
   const [signupData, setSignupData] = useState({
@@ -9,17 +13,60 @@ function Signup() {
   })
 
   const {name, email, password, password2} = signupData
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
+
+  useEffect(() => {
+    if (isError) {
+      console.error(message);
+    }
+
+    if (isSuccess || user) {
+      navigate('/')
+    }
+
+    dispatch(reset())
+  }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = (e) => {
-    setSignupData((prevState)=> ({
-      ...prevState, 
-      [e.target.name]:e.target.value,
+    signupData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
     }))
   }
 
   const onSubmit = (e) => {
     e.preventDefault()
+
+    if (password !== password2) {
+      console.log('Passwords do not match')
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      }
+
+      dispatch(register(userData))
+    }
   }
+
+
+
+
+  // const onChange = (e) => {
+  //   setSignupData((prevState)=> ({
+  //     ...prevState, 
+  //     [e.target.name]:e.target.value,
+  //   }))
+  // }
+
+  // const onSubmit = (e) => {
+  //   e.preventDefault()
+  // }
   return (
     <form onSubmit={onSubmit} className='container'>
     <h3>Sign Up</h3>
@@ -81,7 +128,7 @@ function Signup() {
     </p>
   </form>
 )
+  }
 
-}
 
 export default Signup
