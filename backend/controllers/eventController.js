@@ -94,7 +94,7 @@ const deleteEvent = asyncHandler(async (req, res) => {
 })
 
 module.exports = {
-  getEvent,
+  getEvents,
   setEvent,
   updateEvent,
   deleteEvent,

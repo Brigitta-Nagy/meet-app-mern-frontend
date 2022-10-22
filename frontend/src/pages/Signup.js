@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import {register, reset} from '../features/auth/authSlice'
+import {signup, reset} from '../features/auth/authSlice'
 
 
 function Signup() {
@@ -25,14 +25,14 @@ function Signup() {
     }
 
     if (isSuccess || user) {
-      navigate('/')
+      navigate('/signup')
     }
 
     dispatch(reset())
   }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = (e) => {
-    signupData((prevState) => ({
+    setSignupData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }))
@@ -50,7 +50,7 @@ function Signup() {
         password,
       }
 
-      dispatch(register(userData))
+      dispatch(signup(userData))
     }
   }
 

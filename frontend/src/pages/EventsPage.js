@@ -30,7 +30,7 @@ function EventsPage() {
   // }, [])
   return(
     <div className="container d-flex">
-    <h1>Your events</h1>
+    <h1>Your events add events</h1>
   {events ? (
     <>
       {events.map((event) => {

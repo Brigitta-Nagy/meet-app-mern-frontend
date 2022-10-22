@@ -5,6 +5,7 @@ import EventsPage from './EventsPage';
 import {useNavigate} from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux'
 import { login, reset } from '../features/auth/authSlice'
+import { toast } from 'react-toastify'
 
 
 
@@ -13,6 +14,7 @@ function Login() {
     email:"", 
     password: "", 
   })
+  
   const {email, password} = loginData
 
   const navigate = useNavigate()
@@ -24,24 +26,23 @@ function Login() {
   //     [e.target.name]:e.target.value,
   //   }))
   // }
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
-  )
+  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
 
   useEffect(() => {
     if (isError) {
-      console.error(message);
+      toast.error(message);
     }
 
     if (isSuccess || user) {
       navigate('/')
+      console.log("user success")
     }
 
     dispatch(reset())
   }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = (e) => {
-    loginData((prevState) => ({
+    setLoginData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }))
@@ -61,9 +62,11 @@ function Login() {
  
 
   return ( 
-
-    <form className="container">
+    <>
+    <section>
     <h3>Log In</h3>
+    </section>
+    <form className="container" onSubmit={onSubmit}>
     <div className="mb-3">
       <label>Email address</label>
       <input
@@ -73,7 +76,7 @@ function Login() {
         id='email'
         name='email'
         value={email}
-        onChange={onChange}
+        onChange={e => setLoginData(e.target.value)}
       />         
     </div>
     <div className="mb-3">
@@ -100,8 +103,11 @@ function Login() {
         </label>
       </div>
     </div>
-    <div className="d-grid">
-      <button type="submit" className="btn btn-primary" onClick={()=> navigate("events")}>
+    <div className="d-grid form-group">
+      <button type="submit" className="btn btn-primary"
+      //  onClick={()=> navigate("events")
+      //  }
+      >
         Submit
       </button>
     </div>
@@ -109,6 +115,7 @@ function Login() {
       Forgot <a href="#">password?</a>
     </p>
   </form>
+  </>
 )
 }
  

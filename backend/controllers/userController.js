@@ -6,7 +6,7 @@ const User = require('../models/userModel')
 // @desc    Register new user
 // @route   POST /api/users
 // @access  Public
-const registerUser = asyncHandler(async (req, res) => {
+const signupUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body
 
   if (!name || !email || !password) {
@@ -86,7 +86,7 @@ const generateToken = (id) => {
 }
 
 module.exports = {
-  registerUser,
+  signupUser,
   loginUser,
   getMe,
 }
