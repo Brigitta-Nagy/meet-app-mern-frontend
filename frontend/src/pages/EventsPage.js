@@ -5,7 +5,7 @@ import { useNavigate} from "react-router-dom"
 import {useSelector, useDispatch} from 'react-redux'
 import EventForm from "../components/EventForm"
 import EventItem from "../components/EventItem"
-import {getEvents, reset } from "../features/auth/events/eventSlice"
+import {getEvents, reset } from "../features/events/eventSlice"
 
 
 function EventsPage() {

@@ -3,8 +3,11 @@ import CreateEvent from "./pages/CreateEvent";
 import EventsPage from './pages/EventsPage';
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
-import Home  from "./pages/Home"
+import Home  from "./pages/Dashboard"
 import Navbar from "./components/Navbar"
+import Dashboard from "./pages/Dashboard";
+import Landing from "./pages/Landing";
+import EventForm from "./components/EventForm";
 
 
 function App() {
@@ -15,11 +18,11 @@ function App() {
       
         <Navbar />
         <Routes>
-          <Route path="/" element={<EventsPage />} />
+          <Route path="/" element={<Landing />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
-          <Route path='/create' element={<CreateEvent/>}/>
-          <Route path='/events' element={<Home />} />
+          <Route path='/create' element={<EventForm/>}/>
+          <Route path='/dashboard' element={<Dashboard />} />
         </Routes>
      
     </Router>

@@ -34,8 +34,8 @@ function Login() {
     }
 
     if (isSuccess || user) {
-      navigate('/login')
-      console.log("user success")
+      navigate('/dashboard')
+     
     }
 
     dispatch(reset())

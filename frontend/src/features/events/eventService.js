@@ -11,7 +11,7 @@ const createEvent = async (eventData, token) => {
   }
 
   const response = await axios.post(API_URL, eventData, config)
-
+console.log(response.data, eventData)
   return response.data
 }
 
@@ -28,7 +28,7 @@ const getEvents = async (token) => {
   return response.data
 }
 
-// Delete user event
+// Delete event
 const deleteEvent = async (eventId, token) => {
   const config = {
     headers: {
