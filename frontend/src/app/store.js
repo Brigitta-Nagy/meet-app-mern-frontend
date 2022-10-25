@@ -5,7 +5,7 @@ import eventReducer from "../features/auth/events/eventSlice"
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    event: eventReducer,
+    events: eventReducer,
   },
 })
 

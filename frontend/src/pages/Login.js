@@ -1,7 +1,7 @@
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+// import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import { useState, useEffect } from "react";
-import CreateEvent from "./CreateEvent";
-import EventsPage from './EventsPage';
+// import CreateEvent from "./CreateEvent";
+// import EventsPage from './EventsPage';
 import {useNavigate} from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux'
 import { login, reset } from '../features/auth/authSlice'
@@ -26,7 +26,7 @@ function Login() {
   //     [e.target.name]:e.target.value,
   //   }))
   // }
-  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+  const { user,  isError, isSuccess, message } = useSelector((state) => state.auth)
 
   useEffect(() => {
     if (isError) {
@@ -34,7 +34,7 @@ function Login() {
     }
 
     if (isSuccess || user) {
-      navigate('/')
+      navigate('/login')
       console.log("user success")
     }
 
@@ -105,14 +105,14 @@ function Login() {
     </div>
     <div className="d-grid form-group">
       <button type="submit" className="btn btn-primary"
-      //  onClick={()=> navigate("events")
-      //  }
+       onClick={()=> navigate("/create")
+       }
       >
         Submit
       </button>
     </div>
     <p className="forgot-password text-right">
-      Forgot <a href="#">password?</a>
+      Forgot password?
     </p>
   </form>
   </>

@@ -2,8 +2,8 @@ const express = require("express")
 const path = require("path")
 require("dotenv").config()
 const cors = require("cors")
-const port = process.env.PORT || 4000
 const connectDB = require("./connection")
+const port = process.env.PORT || 4000
 const asyncHandler = require("express-async-handler")
 const Event = require ("./models/eventModel")
 const { errorHandler } = require('./middleware/errorMiddleware')
