@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import Landing from "./pages/Landing";
 import EventForm from "./components/EventForm";
 import Register from "./pages/Register";
+import EventsCards from "./components/EventsCards"
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
    return (
@@ -21,6 +23,7 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/create' element={<EventForm />} />
+            {/* <Route path='/events' element={<EventsCards />} /> */}
           </Routes>
         </div>
       </Router>

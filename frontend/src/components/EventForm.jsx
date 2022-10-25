@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createEvent } from '../features/events/eventSlice'
 import { useNavigate } from 'react-router-dom'

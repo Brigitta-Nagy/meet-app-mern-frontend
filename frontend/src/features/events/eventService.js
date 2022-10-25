@@ -23,6 +23,7 @@ const getEvents = async (token) => {
     },
   }
 
+
   const response = await axios.get(API_URL, config)
 
   return response.data

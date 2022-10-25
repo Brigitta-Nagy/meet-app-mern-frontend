@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const {
+  getAllEvents,
   getEvents,
   setEvent,
   updateEvent,
@@ -11,5 +12,6 @@ const { protect } = require('../middleware/authMiddleware')
 
 router.route('/').get(protect, getEvents).post(protect, setEvent)
 router.route('/:id').delete(protect, deleteEvent).put(protect, updateEvent)
+router.route('/events').get(getAllEvents)
 
 module.exports = router

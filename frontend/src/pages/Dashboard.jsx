@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 // import EventForm from '../components/EventForm'
 import EventItem from '../components/EventItem'
-// import EventsCards from '../components/EventsCards'
+import EventsCards from '../components/EventsCards'
 import Spinner from '../components/Spinner'
 import { getEvents, reset } from '../features/events/eventSlice'
 import Container from 'react-bootstrap/Container';
@@ -43,7 +43,7 @@ function Dashboard() {
     <Container>
       <Row>
         <Col>
-          {/* <EventsCards/> */}
+          <EventsCards/>
          </Col>
         <Col>
           <section className='content col-sm'>

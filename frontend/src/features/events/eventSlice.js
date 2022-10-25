@@ -45,6 +45,12 @@ export const getEvents = createAsyncThunk(
     }
   }
 )
+//
+// const getAllEvents = asyncHandler(async (req, res) =>{
+//   const allEvents = await Event.find()
+
+//   res.status(200).json(allEvents)
+// })
 
 // Delete event
 export const deleteEvent = createAsyncThunk(
