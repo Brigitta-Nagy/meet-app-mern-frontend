@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 // import EventForm from '../components/EventForm'
 import EventItem from '../components/EventItem'
 // import EventsCards from '../components/EventsCards'
-// import Spinner from '../components/Spinner'
+import Spinner from '../components/Spinner'
 import { getEvents, reset } from '../features/events/eventSlice'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -14,6 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 function Dashboard() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
   const { user } = useSelector((state) => state.auth)
   const { events, isLoading, isError, message } = useSelector((state) => state.events )
 
@@ -30,14 +31,15 @@ function Dashboard() {
     }
   }, [user, navigate, isError, message, dispatch])
 
-  // if (isLoading) {
-  //   return <Spinner />
-  // }
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <>
-    <h2>Hello, {user.name}</h2>
-    
+    <section className='heading'>
+      <h2>Hello, {user.name}</h2>
+    </section>
     <Container>
       <Row>
         <Col>

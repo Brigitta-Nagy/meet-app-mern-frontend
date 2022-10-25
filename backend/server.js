@@ -1,42 +1,20 @@
-const express = require("express")
-const path = require("path")
-require("dotenv").config()
-const cors = require("cors")
-const connectDB = require("./connection")
-const port = process.env.PORT || 4000
-const asyncHandler = require("express-async-handler")
-const Event = require ("./models/eventModel")
-const { errorHandler } = require('./middleware/errorMiddleware')
+const path = require('path');
+const express = require('express');
+const colors = require('colors');
+const dotenv = require('dotenv').config();
+const { errorHandler } = require('./middleware/errorMiddleware');
+const connectDB = require('./config/db');
+const port = process.env.PORT || 5000;
 
-connectDB()
-const app = express()
+connectDB();
 
-app.use(cors())
-app.use(express.json())
+const app = express();
+
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
- app.use("/api/events" , require('./routes/eventRoutes'))
-  app.use('/api/users', require("./routes/userRoutes"))
-
-//   app.post("/create",  (req, res)=> {
-//  Event.create({
-//   title: req.body.title,
-//    city: req.body.city,
-//    address: req.body.address,
-//    date: req.body.date,
-//    time: req.body.time,
-//    description: req.body.description,
-//    participants: req.body.participants
-//  }).then((doc)=>console.log(doc))
-//   .catch((err)=>console.log(err))
-// })
-
-// app.get("/events", (req,res)=>{
-//   Event.find()
-//   .then(items => res.json(items))
-//   .catch((err)=>console.log(err))
-// })
+app.use('/api/events', require('./routes/eventRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
 // Serve frontend
 if (process.env.NODE_ENV === 'production') {
@@ -53,4 +31,4 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(errorHandler);
 
-app.listen(port, ()=> console.log(`server running on ${port}`))
+app.listen(port, () => console.log(`Server started on port ${port}`));

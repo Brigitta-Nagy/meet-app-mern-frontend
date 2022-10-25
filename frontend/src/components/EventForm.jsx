@@ -122,9 +122,7 @@ function EventForm() {
             onChange={(e) => setDescription(e.target.value)}></textarea>
         </div>    
         <div className='form-group'>
-          <button className='btn btn-block' type='submit'
-          
-           >
+          <button className='btn btn-block' type='submit'>
             Add Event
           </button>
         </div>
@@ -134,3 +132,13 @@ function EventForm() {
 }
 
 export default EventForm
+
+  // useEffect(()=>{
+  //   fetch("http://localhost:5000/events")
+  //   .then(res=>{
+  //     return res.json()
+  //   })
+  //   .then(data => {
+  //     setEvent(data)
+  //   })
+  // },[])

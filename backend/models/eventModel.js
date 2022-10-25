@@ -1,31 +1,48 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
-const eventSchema = mongoose.Schema (
+const eventSchema = mongoose.Schema(
   {
-    user:{
-      type:mongoose.Schema.Types.ObjectId,
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'User',
-   },
-  title: 
-   {type: String, required: [true, 'Please add title']},
-  city: 
-   {type: String, required: [true, 'Please add city'], uppercase: true, trim: true}, 
-  address: 
-    {type: String, required: [true, 'Please add exact address']}, 
-  date: 
-    {type: Date, required: [true, 'Please add date']},
-  time: 
-    {type: String, required: [true, 'Please add time']},
-  description: 
-    {type: String, required: [true, 'Please add more details']},
-  participants: {
-    type: Number, required: [true, 'Please add max. participants']},
-  },
-    {
-      timestamps: true,
-    }
-      
+    },
+    title: {
+      type: String, 
+      uppercase: true,
+      required: [true, 'Please add title']
+    },
+    city: {
+      type: String, 
+      required: false, 
+      uppercase: true, 
+      trim: true
+    }, 
+    address: {
+      type: String, 
+      required: [true, 'Please add exact address']
+      }, 
+    date: {
+      type: Date, 
+      required: false
+    },
+    time: {
+      type: String, 
+      required: false
+    },
+    description: {
+      type: String, 
+      // required: [true, 'Please add more details']
+    },
+    participants: {
+      type: Number, 
+      // required: [true, 'Please add max. participants']
+    },
+    },
+  
+  {
+    timestamps: true,
+  }
 )
-module.exports = mongoose.model("Event", eventSchema)
 
+module.exports = mongoose.model('Event', eventSchema)
