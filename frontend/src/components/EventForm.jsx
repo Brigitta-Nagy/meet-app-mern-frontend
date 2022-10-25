@@ -132,13 +132,3 @@ function EventForm() {
 }
 
 export default EventForm
-
-  // useEffect(()=>{
-  //   fetch("http://localhost:5000/events")
-  //   .then(res=>{
-  //     return res.json()
-  //   })
-  //   .then(data => {
-  //     setEvent(data)
-  //   })
-  // },[])

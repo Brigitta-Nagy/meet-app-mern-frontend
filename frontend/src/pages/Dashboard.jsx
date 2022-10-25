@@ -63,7 +63,7 @@ function Dashboard() {
     </Container>
 
    <div className='form-group '>
-      <button className='btn btn-block' onClick={()=>navigate('/login/create')}>
+      <button className='btn btn-block' onClick={()=>navigate('/create')}>
           Create on other event
       </button>
     </div>
