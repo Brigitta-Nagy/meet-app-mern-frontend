@@ -61,7 +61,7 @@ function EventForm() {
     <section className='form'>
       <form onSubmit={onSubmit}> 
         <div className='form-group'>
-          <h2 className='mb-2'>Create an event</h2>
+          <h2 className='mb-5'>Create an event</h2>
          <input
             name='title'
             placeholder='event title'
@@ -122,7 +122,7 @@ function EventForm() {
             onChange={(e) => setDescription(e.target.value)}></textarea>
         </div>    
         <div className='form-group'>
-          <button className='btn btn-block' type='submit'>
+          <button className='btn-me btn-block' type='submit'>
             Add Event
           </button>
         </div>

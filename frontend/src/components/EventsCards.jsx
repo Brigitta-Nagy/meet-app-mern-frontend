@@ -1,11 +1,12 @@
-// import axios from "axios"
+
 import {useEffect, useState} from "react"
 // import EventItem from "./EventItem"
-// import {Button} from "react-bootstrap"
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function EventsCards() {
   const [events, setEvents] = useState([])
+  const [joinActive, setJoinActive] = useState(false)
 
   useEffect(() => {
     fetch('http://localhost:5000/api/events/events')
@@ -16,20 +17,23 @@ function EventsCards() {
       })
       .catch(err => console.log(err))
   }, [])
-
+  const handleClick = ()=>{
+    setJoinActive(current => !current)
+   }
   return(
     <div>
-      <p>Events you can join</p>
+      <h3 className='m-3'>Events you can join :</h3>
+      <input search/>
       <div className='event '>
      
       {events.map((event) => (
          <ul>
        <li className="m-3" key={event._id}><h2>{event.title}</h2>
-        <h3>Date and time: {event.date}, {event.time}</h3>
-        <p>Address: {event.city}, {event.address}</p>
+        <h4>Date and time: {event.date}, {event.time}</h4>
+        <p><strong>Address: </strong>{event.city}, {event.address}</p>
         <p>Description: {event.description}</p>
         <p>Max. participants:{event.participants} </p>
-        <button className="btn btn-info">Join</button>
+        <button className="btn-me btn-block" onClick={handleClick}>Join</button>
         </li>
          </ul>
         

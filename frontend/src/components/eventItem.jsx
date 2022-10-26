@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { deleteEvent } from '../features/events/eventSlice'
+// import { updateEvent } from '../features/events/eventSlice'
 
 function EventItem({ event }) {
   const dispatch = useDispatch()
@@ -7,13 +8,19 @@ function EventItem({ event }) {
   return (
     <div className='event'>
       <h2>{event.title}</h2>
-      <h3>Date and time: {event.date}, {event.time}</h3>
-      <p>Address: {event.city}, {event.address}</p>
+      <h4>Date and time: {event.date}, {event.time}</h4>
+      <p><strong>Address: </strong>{event.city}, {event.address}</p>
       <p>Description: {event.description}</p>
       <p>Max. participants:{event.participants} </p>
-      <button onClick={() => dispatch(deleteEvent(event._id))} className='close'>
-        X
+      <div className="">
+      <button onClick={() => dispatch(deleteEvent(event._id))} className='btn-me mb-0'>
+        delete this event
       </button>
+      
+      {/* <button onClick={() => dispatch(updateEvent(event._id))} className='btn-me mb-0'>
+        update this event
+      </button> */}
+      </div>
     </div>
   )
 }

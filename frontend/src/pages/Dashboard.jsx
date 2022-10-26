@@ -38,18 +38,19 @@ function Dashboard() {
   return (
     <>
     <section className='heading'>
-      <h2>Hello, {user.name}</h2>
+      <h2>Hello, {user.name}! </h2>
     </section>
-    <Container>
+    <Container >
       <Row>
         <Col>
           <EventsCards/>
          </Col>
         <Col>
-          <section className='content col-sm'>
+          <section className='content col-sm m-5'>
             {events.length > 0 ? (
-              <div className='events'>
-                <p>Your events:</p>
+              <div >
+                <h3 className='m-3'>Your events:</h3>
+        
                 {events.map((event) => (
                   <EventItem key={event._id} event={event} />
                 ))}
@@ -57,16 +58,17 @@ function Dashboard() {
             ) : (
               <h3>You have not shared any events</h3>
             )}
+            <div className='form-group '>
+              <button className='btn-me btn-block mt-5' onClick={()=>navigate('/create')}>
+                  Create on other event
+              </button>
+             </div>
           </section>
-          </Col>
+        </Col>
+          
       </Row>
     </Container>
 
-   <div className='form-group '>
-      <button className='btn btn-block' onClick={()=>navigate('/create')}>
-          Create on other event
-      </button>
-    </div>
   
   </>
   )}

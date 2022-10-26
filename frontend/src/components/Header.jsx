@@ -25,7 +25,7 @@ function Header() {
       <ul>
         {user ? (
           <li>
-            <button className='btn' onClick={onLogout}>
+            <button className='btn-me' onClick={onLogout}>
               <BiLogOut /> Logout
             </button>
           </li>
