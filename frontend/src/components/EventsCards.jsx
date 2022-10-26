@@ -1,7 +1,7 @@
-import axios from "axios"
+// import axios from "axios"
 import {useEffect, useState} from "react"
-import EventItem from "./EventItem"
-import {Button} from "react-bootstrap"
+// import EventItem from "./EventItem"
+// import {Button} from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function EventsCards() {
@@ -21,8 +21,9 @@ function EventsCards() {
     <div>
       <p>Events you can join</p>
       <div className='event '>
-      <ul>
+     
       {events.map((event) => (
+         <ul>
        <li className="m-3" key={event._id}><h2>{event.title}</h2>
         <h3>Date and time: {event.date}, {event.time}</h3>
         <p>Address: {event.city}, {event.address}</p>
@@ -30,10 +31,11 @@ function EventsCards() {
         <p>Max. participants:{event.participants} </p>
         <button className="btn btn-info">Join</button>
         </li>
+         </ul>
         
         ))}
       
-       </ul>
+      
        </div>
       
     </div>

@@ -8,7 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Landing from "./pages/Landing";
 import EventForm from "./components/EventForm";
 import Register from "./pages/Register";
-import EventsCards from "./components/EventsCards"
+// import EventsCards from "./components/EventsCards"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {

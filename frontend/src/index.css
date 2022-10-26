@@ -15,11 +15,14 @@
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
+  background-color: whitesmoke;
 }
 
-a, h1 {
+a, h1, .login-btn{
   text-decoration: none;
   color: #6f3030;
+  font-size: large;
+ 
 }
 
 p, h1 {
@@ -49,7 +52,7 @@ h3 {
   text-align: center;
 }
 
-.header {
+.header{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -65,7 +68,8 @@ h3 {
 }
 
 .header ul li {
-  margin-left: 20px;
+  margin-left: 30px;
+  padding: 20px;
 }
 
 .header ul li a {
@@ -94,7 +98,7 @@ h3 {
   color: #6f3030;
 }
 
-.goals {
+.events {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
@@ -138,7 +142,7 @@ h3 {
 }
 
 
-.btn {
+.btn-me {
   padding: 10px 20px;
   border: 1px solid #6f3030;
   border-radius: 5px;
@@ -168,8 +172,8 @@ h3 {
   margin-bottom: 20px;
 }
 
-.btn:hover {
-  transform: scale(0.98);
+.btn-me:hover {
+  transform: scale(0.99);
 }
 
 .loadingSpinnerContainer {
@@ -217,8 +221,8 @@ h3 {
   }
 }
 
-.container {
-  max-width: 60%;
+.container-me {
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px 20px;
   flex-direction: column;

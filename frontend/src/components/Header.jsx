@@ -2,6 +2,7 @@ import { BiLogIn, BiLogOut, BiUser } from 'react-icons/bi'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
+import logo from "../static/colorful-wall-min.jpg"
 
 function Header() {
   const navigate = useNavigate()
@@ -16,8 +17,10 @@ function Header() {
 
   return (
     <header className='header'>
-      <div className='logo'>
-        <Link to='/'>Add event</Link>
+      <div>
+        <Link to='/'>
+          <img className="logo" src={logo} alt="meet-app logo"/>
+        </Link>
       </div>
       <ul>
         {user ? (
@@ -29,12 +32,12 @@ function Header() {
         ) : (
           <>
             <li>
-              <Link to='/login'>
+              <Link to='/login' className='login-btn'>
                 <BiLogIn/> Login
               </Link>
             </li>
             <li>
-              <Link to='/register'>
+              <Link to='/register' className='login-btn'>
                 <BiUser /> Register
               </Link>
             </li>
