@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose')
 
 const eventSchema = mongoose.Schema(
@@ -23,8 +24,8 @@ const eventSchema = mongoose.Schema(
       required: [true, 'Please add exact address']
       }, 
     date: {
-      type: Date, 
-      required: false
+      type: String, 
+      required: true
     },
     time: {
       type: String, 

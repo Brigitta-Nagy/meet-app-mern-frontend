@@ -18,9 +18,9 @@ function Header() {
   return (
     <header className='header'>
       <div>
-        <Link to='/'>
+        
           <img className="logo" src={logo} alt="meet-app logo"/>
-        </Link>
+        
       </div>
       <ul>
         {user ? (

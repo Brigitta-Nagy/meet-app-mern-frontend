@@ -1,9 +1,11 @@
 import { useDispatch } from 'react-redux'
 import { deleteEvent } from '../features/events/eventSlice'
+import moment from 'moment'
 // import { updateEvent } from '../features/events/eventSlice'
 
 function EventItem({ event }) {
   const dispatch = useDispatch()
+
 
   return (
     <div className='event'>

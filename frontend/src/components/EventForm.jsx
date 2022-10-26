@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createEvent } from '../features/events/eventSlice'
 import { useNavigate } from 'react-router-dom'
+import moment from "moment"
 
 function EventForm() {
   const navigate = useNavigate()
@@ -88,9 +89,10 @@ function EventForm() {
         </div>
         <div className='form-group'>
           <input
-            type="date"
-            name='date'
-            placeholder='date'
+            type="date" 
+            name="begin" 
+            placeholder="dd-mm-yyyy" 
+            min="1997-01-01" max="2030-12-31"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
