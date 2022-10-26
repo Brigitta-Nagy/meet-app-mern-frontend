@@ -46,11 +46,7 @@ export const getEvents = createAsyncThunk(
   }
 )
 //
-// const getAllEvents = asyncHandler(async (req, res) =>{
-//   const allEvents = await Event.find()
 
-//   res.status(200).json(allEvents)
-// })
 
 // Delete event
 export const deleteEvent = createAsyncThunk(
@@ -59,6 +55,24 @@ export const deleteEvent = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.user.token
       return await eventService.deleteEvent(id, token)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+//update
+export const updateEvent = createAsyncThunk(
+  'events/update',
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await eventService.updateEvent(id, token)
     } catch (error) {
       const message =
         (error.response &&
@@ -116,6 +130,21 @@ export const eventSlice = createSlice({
         )
       })
       .addCase(deleteEvent.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(updateEvent.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(updateEvent.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.events = state.events.filter(
+          (event) => event._id !== action.payload.id
+        )
+      })
+      .addCase(updateEvent.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

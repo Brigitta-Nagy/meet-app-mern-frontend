@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { deleteEvent } from '../features/events/eventSlice'
-import moment from 'moment'
-// import { updateEvent } from '../features/events/eventSlice'
+
+import { updateEvent } from '../features/events/eventSlice'
 
 function EventItem({ event }) {
   const dispatch = useDispatch()
@@ -19,9 +19,9 @@ function EventItem({ event }) {
         delete this event
       </button>
       
-      {/* <button onClick={() => dispatch(updateEvent(event._id))} className='btn-me mb-0'>
+      <button onClick={() => dispatch(updateEvent(event._id))} className='btn-me mb-0'>
         update this event
-      </button> */}
+      </button>
       </div>
     </div>
   )
