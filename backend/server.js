@@ -20,10 +20,15 @@ app.use("/api/events", require("./routes/eventRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 
 app.put("/update/:id", (req, res) => {
-  console.log(`elso sor: ${req.params.id}`);
+  
   Event.findByIdAndUpdate(req.params.id,
     { title: req.body.title,
-    description: req.body.description,
+      city:req.body.city,
+      address:req.body.address,
+      date:req.body.date,
+      time:req.body.time,
+      participants:req.body.participants,
+      description: req.body.description,
   }
 
 )

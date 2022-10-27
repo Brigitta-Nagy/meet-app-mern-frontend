@@ -13,7 +13,12 @@ function EventItem({ event }) {
   const [updatedEvent, setUpdatedEvent] = useState({
     id:"", 
     title:"",
-    description:""
+    description:"", 
+    city: "", 
+    address: "",
+    time: "",
+    date: "", 
+    participants: ""
   })
 
   const [show, setShow] = useState(false);
@@ -21,12 +26,17 @@ function EventItem({ event }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const updateEvent = (id, title, description) => {
+  const updateEvent = (id, title, description, city, address, time, date, participants) => {
     setUpdatedEvent((prev) => {
       return {
         ...prev,
         id: id,
         title: title,
+        city: city, 
+        address: address, 
+        time: time, 
+        date: date,
+        participants: participants,
         description: description,
       };
     });
@@ -68,14 +78,50 @@ function EventItem({ event }) {
           <Modal.Title>Update event</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Control
+          <Form.Control 
+            className='mb-1'
             placeholder="title"
             name="title"
             value={updatedEvent.title ? updatedEvent.title : ""}
-            style={{ marginBottom: "1rem" }}
             onChange={handleChange}
-          />
+          />  
+           <Form.Control
+          className='mb-1'
+          placeholder="date"
+          name="date"
+          onChange={handleChange}
+          value={updatedEvent.date ? updatedEvent.date : ""}
+        />
+           <Form.Control
+          className='mb-1'
+          placeholder="time"
+          name="time"
+          onChange={handleChange}
+          value={updatedEvent.time ? updatedEvent.time : ""}
+        />
+        <Form.Control
+          className='mb-1'
+          placeholder="city"
+          name="city"
+          onChange={handleChange}
+          value={updatedEvent.city ? updatedEvent.city : ""}
+        />  
           <Form.Control
+          className='mb-1'
+          placeholder="address"
+          name="address"
+          onChange={handleChange}
+          value={updatedEvent.address ? updatedEvent.address : ""}
+        />
+           <Form.Control
+          className='mb-1'
+          placeholder="participants"
+          name="participants"
+          onChange={handleChange}
+          value={updatedEvent.participants? updatedEvent.participants : ""}
+        />
+          <Form.Control
+            className='mb-1'
             placeholder="description"
             name="description"
             onChange={handleChange}
@@ -102,7 +148,7 @@ function EventItem({ event }) {
               delete
             </button>
             <button 
-            onClick={() => updateEvent(event._id, event.title, event.description)} 
+            onClick={() => updateEvent(event._id, event.title, event.description, event.city, event.address, event.time, event.date, event.participants)} 
             // onClick={() => dispatch(updateEvent(event._id, event.title, event.description))}
             className='btn-me mb-0'>
               update
