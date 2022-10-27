@@ -12,7 +12,7 @@ const getEvents = asyncHandler(async (req, res) => {
   res.status(200).json(events)
 })
 
-// @desc    Get events
+// @desc    Get all events
 // @route   GET /api/events/events
 // @access  Public
 const getAllEvents = asyncHandler(async (req, res) =>{
@@ -66,9 +66,19 @@ const updateEvent = asyncHandler(async (req, res) => {
     res.status(401)
     throw new Error('User not authorized')
   }
+// router.route("/update/:id").put(updateEvent)
+// (req, res) => {
+//     Event.findByIdAndUpdate({_id:req.params.id}, {
+//       title:req.body.title, 
+//       description: req.body.description})
+//     })
+//       .then(doc => console.log(doc))
+//       .catch(err => console.log(err))
 
   const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
+    // title: req.body.title, 
+    // description: req.body.description
   })
 
   res.status(200).json(updatedEvent)

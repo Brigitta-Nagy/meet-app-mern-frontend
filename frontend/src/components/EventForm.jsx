@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createEvent } from '../features/events/eventSlice'
 import { useNavigate } from 'react-router-dom'
-import moment from "moment"
+
 
 function EventForm() {
   const navigate = useNavigate()

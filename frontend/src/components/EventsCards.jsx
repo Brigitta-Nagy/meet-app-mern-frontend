@@ -17,28 +17,30 @@ function EventsCards() {
       })
       .catch(err => console.log(err))
   }, [])
-  const handleClick = ()=>{
-    setJoinActive(current => !current)
-   }
+  // const handleClick = ()=>{
+  //   setJoinActive(current => !current)
+  //  }
   return(
     <div>
       <h3 className='m-3'>Events you can join :</h3>
-      <input search/>
+      {/* <input search/> */}
       <div className='event '>
-     
+      <ul>
       {events.map((event) => (
-         <ul>
+         
        <li className="m-3" key={event._id}><h2>{event.title}</h2>
         <h4>Date and time: {event.date}, {event.time}</h4>
         <p><strong>Address: </strong>{event.city}, {event.address}</p>
         <p>Description: {event.description}</p>
         <p>Max. participants:{event.participants} </p>
-        <button className="btn-me btn-block" onClick={handleClick}>Join</button>
+        <button className="btn-me btn-block" 
+        // onClick={handleClick}
+        >Join</button>
         </li>
-         </ul>
+       
         
         ))}
-      
+        </ul>
       
        </div>
       

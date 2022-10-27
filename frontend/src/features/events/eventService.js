@@ -41,11 +41,22 @@ const deleteEvent = async (eventId, token) => {
 
   return response.data
 }
+const updateEvent = async (eventId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
 
+  const response = await axios.put(API_URL + eventId, config)
+
+  return response.data
+}
 const eventService = {
   createEvent,
   getEvents,
   deleteEvent,
+  updateEvent
 }
 
 export default eventService
