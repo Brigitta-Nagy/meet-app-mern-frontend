@@ -2,7 +2,7 @@ import { BiLogIn, BiLogOut, BiUser } from 'react-icons/bi'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
-import logo from "../static/colorful-wall-min.jpg"
+import logo from "../static/m-a-m-logo.png"
 
 function Header() {
   const navigate = useNavigate()
@@ -16,7 +16,7 @@ function Header() {
   }
 
   return (
-    <header className='header'>
+    <header className='header container'>
       <div>
         
           <img className="logo" src={logo} alt="meet-app logo"/>

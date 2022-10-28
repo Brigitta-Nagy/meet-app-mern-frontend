@@ -127,6 +127,11 @@ function EventForm() {
           <button className='btn-me btn-block' type='submit'>
             Add Event
           </button>
+          <button className='btn-me btn-block'
+               onClick={() => navigate(-1)}
+            >
+              BACK
+          </button>
         </div>
       </form>
     </section>

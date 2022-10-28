@@ -11,17 +11,17 @@ function Landing() {
     <p>Meet new people who share your interests through online and in-person events. It’s free to create an account.</p>
     <div className='pic-container d-flex flex-row '>
       <div className='pic m-3'>
-      <img className="logo" src={joinPic} alt="join to m-a-m hands"/>
+      <img className="pic-landing-page" src={joinPic} alt="join to m-a-m hands"/>
         <h3>JOIN a group</h3>
         <p>Meet others with same interests, find friends</p>
       </div>
       <div className='pic m-3'>
-      <img className="logo" src={createPic} alt="join to m-a-m hands"/>
+      <img className="pic-landing-page" src={createPic} alt="join to m-a-m hands"/>
         <h3>CREATE an event</h3>
         <p>Start a group, make friends with publish and host an event</p>
       </div>
       <div className='pic m-3'>
-      <img className="logo" src={findPic} alt="join to m-a-m hands"/>
+      <img className="pic-landing-page" src={findPic} alt="join to m-a-m hands"/>
         <h3>FIND an event</h3>
         <p>Find an event about any topic, online or in-person</p>
       </div>
