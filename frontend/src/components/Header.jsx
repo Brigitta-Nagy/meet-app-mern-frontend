@@ -18,33 +18,30 @@ function Header() {
   return (
     <header className='header container'>
       <div>
-        
-          <img className="logo" src={logo} alt="meet-app logo"/>
-        
+         <img className="logo" src={logo} alt="meet-app logo"/>
       </div>
       <ul>
         {user ? (
           <li>
             <button className='btn-me' onClick={onLogout}>
-              <BiLogOut /> Log out
+              <BiLogOut /> Logout
             </button>
           </li>
         ) : (
           <>
             <li>
-              <Link to='/login' className='login-btn'>
+              <Link to='/login' className='login-btn btn-me'>
                 <BiLogIn/> Login
               </Link>
             </li>
             <li>
-              <Link to='/register' className='login-btn'>
+              <Link to='/register' className='login-btn btn-me'>
                 <BiUser /> Register
               </Link>
             </li>
           </>
         )}
       </ul>
-      
     </header>
   )
 }

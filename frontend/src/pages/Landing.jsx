@@ -2,6 +2,9 @@ import React from 'react'
 import joinPic from "../static/hands-on-table-min.jpg"
 import findPic from "../static/child-draw-colorful-min.jpg"
 import createPic from "../static/pencils-min.jpg"
+import { BiUser } from 'react-icons/bi'
+import { Link, useNavigate } from 'react-router-dom'
+
 function Landing() {
   return (
     <>
@@ -25,8 +28,11 @@ function Landing() {
         <h3>FIND an event</h3>
         <p>Find an event about any topic, online or in-person</p>
       </div>
-    </div>
-
+ 
+    </div >
+          <Link to='/register' className='login-btn btn-me mt-5'>
+                <BiUser /> Create an account
+          </Link>
     </>
   )
 }

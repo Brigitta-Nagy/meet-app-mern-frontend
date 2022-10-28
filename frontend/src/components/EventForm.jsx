@@ -24,7 +24,6 @@ function EventForm() {
   const [description, setDescription] = useState('')
   const dispatch = useDispatch()
 
-
   // const onChange = (e) =>{
   //   const {name, value} = e.target;
   //    setEvent((prev)=>{
@@ -53,9 +52,8 @@ function EventForm() {
   //  })
      
      dispatch(createEvent({ title, city, address, date, time, participants, description }))
-    setTitle('')
-
-    navigate("/dashboard")
+    
+     navigate("/dashboard")
   }
 
   return (
@@ -63,75 +61,74 @@ function EventForm() {
       <form onSubmit={onSubmit}> 
         <div className='form-group'>
           <h2 className='mb-5'>Create an event</h2>
-         <input
-            name='title'
-            placeholder='event title'
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            <input
+              name='title'
+              placeholder='event title'
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+        </div>
+        <div className='form-group'>
+            <input
+              name='city'
+              placeholder='city'
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+        </div>
+        <div className='form-group'>
+            <input
+              name='address'
+              placeholder='exact address'
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+        </div>
+        <div className='form-group'>
+            <input
+              type="date" 
+              name="begin" 
+              placeholder="dd-mm-yyyy" 
+              min="1997-01-01" max="2030-12-31"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
           />
         </div>
         <div className='form-group'>
-          
-          <input
-            name='city'
-            placeholder='city'
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
+            <input
+              name='time'
+              placeholder='time'
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
           />
         </div>
         <div className='form-group'>
-          <input
-            name='address'
-            placeholder='exact address'
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            <input
+              name='city'
+              placeholder='Max. participants'
+              value={participants}
+              onChange={(e) => setParticipants(e.target.value)}
           />
         </div>
         <div className='form-group'>
-          <input
-            type="date" 
-            name="begin" 
-            placeholder="dd-mm-yyyy" 
-            min="1997-01-01" max="2030-12-31"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            name='time'
-            placeholder='time'
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            name='city'
-            placeholder='Max. participants'
-            value={participants}
-            onChange={(e) => setParticipants(e.target.value)}
-          />
-        </div>
-        <div className='form-group'>
-        <textarea className="form-control" 
-            type = "textarea"
-            name='description' 
-            value={description} 
-            placeholder='event description'
-            id="exampleFormControlTextarea1" 
-            rows="3" 
-            onChange={(e) => setDescription(e.target.value)}></textarea>
+            <textarea className="form-control" 
+              type = "textarea"
+              name='description' 
+              value={description} 
+              placeholder='event description'
+              id="exampleFormControlTextarea1" 
+              rows="3" 
+              onChange={(e) => setDescription(e.target.value)}>
+            </textarea>
         </div>    
-        <div className='form-group'>
-          <button className='btn-me btn-block' type='submit'>
-            Add Event
-          </button>
-          <button className='btn-me btn-block'
-               onClick={() => navigate(-1)}
-            >
-              BACK
-          </button>
+        <div className='form-group mb-5'>
+            <button className='btn-me btn-block' type='submit'>
+              Add Event
+            </button>
+            <button className='btn-me btn-block'
+                onClick={() => navigate(-1)}
+              > BACK
+            </button>
         </div>
       </form>
     </section>

@@ -8,6 +8,10 @@ const connectDB = require("./config/db");
 const port = process.env.PORT || 5000;
 const mongoose = require("mongoose")
 const Event = require("./models/eventModel")
+// mongoose.connect("mongodb://localhost:5000", {
+//   useNewUrlParser: "true",
+//   useUnifiedTopology: "true"
+// })
 connectDB();
 
 const app = express();

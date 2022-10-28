@@ -1,15 +1,15 @@
 import { useDispatch } from 'react-redux'
-import { deleteEvent, updateEvent } from '../features/events/eventSlice'
+import { deleteEvent,  } from '../features/events/eventSlice'
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
-import {useState, useEffect} from "react"
+import {useState, } from "react"
 import axios from "axios"
 
 
 
 function EventItem({ event }) {
   const dispatch = useDispatch()
-  const [events, setEvents] = useState([])
+  // const [events, setEvents] = useState([])
   const [updatedEvent, setUpdatedEvent] = useState({
     id:"", 
     title:"",
@@ -67,7 +67,7 @@ function EventItem({ event }) {
 
   return (
     <div className='event'>
-      <h2>{event.title}</h2>
+      <h3>{event.title}</h3>
       <h4>When: {event.date}, {event.time}</h4>
       <p><strong>Where: </strong>{event.city}, {event.address}</p>
       <p>Description: {event.description}</p>
@@ -145,13 +145,13 @@ function EventItem({ event }) {
           return( */}
             <div className="d-flex flex-row justify-content-md-around">
             <button onClick={() => dispatch(deleteEvent(event._id))} className='btn-me mb-0'>
-              delete
+              Delete
             </button>
             <button 
             onClick={() => updateEvent(event._id, event.title, event.description, event.city, event.address, event.time, event.date, event.participants)} 
             // onClick={() => dispatch(updateEvent(event._id, event.title, event.description))}
             className='btn-me mb-0'>
-              update
+              Update
             </button>
         
             </div>

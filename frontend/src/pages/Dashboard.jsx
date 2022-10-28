@@ -11,6 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import "bootstrap/dist/css/bootstrap.min.css"
 
+
 function Dashboard() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -39,6 +40,7 @@ function Dashboard() {
     <>
     <section className='heading'>
       <h2>Hello, {user.name}! </h2>
+      {/* <Search /> */}
     </section>
     <Container >
       <Row>

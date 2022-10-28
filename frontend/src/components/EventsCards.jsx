@@ -4,9 +4,11 @@ import {useEffect, useState} from "react"
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-function EventsCards() {
+function EventsCards({event}) {
   const [events, setEvents] = useState([])
   const [joinActive, setJoinActive] = useState(false)
+  const [search, setSearch] = useState("")
+  
 
   useEffect(() => {
     fetch('http://localhost:5000/api/events/events')
@@ -17,30 +19,43 @@ function EventsCards() {
       })
       .catch(err => console.log(err))
   }, [])
-  // const handleClick = ()=>{
-  //   setJoinActive(current => !current)
-  //  }
+
+
+
+  const handleClick = ()=>{
+    setJoinActive(!joinActive)
+    
+   }
   return(
     <div>
       <h3 className='m-3'>Events you can join :</h3>
-      {/* <input search/> */}
+        <input type="text" placeholder="Search by city..." onChange={e=>setSearch(e.target.value)} className="searchBar"/>
       <div className='event '>
-      <ul>
-      {events.map((event) => (
-         
-       <li className="m-3" key={event._id}><h2>{event.title}</h2>
-        <h4>Date and time: {event.date}, {event.time}</h4>
-        <p><strong>Address: </strong>{event.city}, {event.address}</p>
-        <p>Description: {event.description}</p>
-        <p>Max. participants:{event.participants} </p>
-        <button className="btn-me btn-block" 
-        // onClick={handleClick}
-        >Join</button>
-        </li>
+        <ul >
+        {events.filter((event)=>{
+          return search.toLowerCase() === '' ? event : event.city.toLowerCase().includes(search) 
+        })
+        .map((event) => (
+          
+          <li className="m-2" key={event._id}>
+            <h3>{event.title}</h3>
+            <h4>When: {event.date}, {event.time}</h4>
+            <p><strong>Where: </strong>{event.city}, {event.address}</p>
+            <p>Description: {event.description}</p>
+            <p>Max. participants:{event.participants} </p>
+            <button className="btn-me btn-block" 
+          onClick={() => handleClick(event._id)}
+          //  onClick={handleClick} className= {`btn-me btn-block ${joinActive} ? notJoin-button : "" `}
+          >{joinActive ? "Joined" : "Join"}</button>
+
+            </li>
+          ))}
+          </ul>
+     
+      
+      
        
-        
-        ))}
-        </ul>
+       
       
        </div>
       
@@ -52,16 +67,3 @@ function EventsCards() {
 
 export default EventsCards
 
-//  <EventItem key={event._id} event={event} />
-      //    ))}
-// {events.map(event => (<li key={event._id}>{event.title}</li>))}
-// fetch(url)
-// .then(function(response) {
-// if (response.status >= 400) {
-//    throw new Error("Bad response from server");
-// }
-// return response.json();
-// })
-// .then(function(data) {
-//  console.log(data);
-// });

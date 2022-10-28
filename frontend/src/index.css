@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
-:root {
-  --primary: #92dbc7;
-  --error: #c6305f;
-}
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 * {
   margin: 0;
@@ -22,8 +17,7 @@ a, h1, .login-btn{
   text-decoration: none;
   color: #844040;
   font-size: large;
-  border: 1 px solid black
- 
+  
 }
 
 p {
@@ -58,7 +52,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid #844040;
   margin-bottom: 60px;
 }
 
@@ -78,7 +72,7 @@ h3 {
   align-items: center;
 }
 
-.header ul li a:hover {
+.btn-me:hover {
   color: #777;
 }
 
@@ -155,15 +149,14 @@ h3 {
   font-weight: 700;
   cursor: pointer;
   text-align: center;
-  /* appearance: button; */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.btn svg {
+/* .btn svg {
   margin-right: 8px;
-}
+} */
 
 .btn-reverse {
   background: #fff;
@@ -178,7 +171,10 @@ h3 {
 .btn-me:hover {
   transform: scale(0.99);
 }
-
+.searchBar{
+  outline: #562020;
+  border-radius: 5px;
+}
 .loadingSpinnerContainer {
   position: fixed;
   top: 0;
