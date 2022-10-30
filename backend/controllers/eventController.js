@@ -1,7 +1,9 @@
 const asyncHandler = require('express-async-handler')
+// const { default: JoinedEvents } = require('../../frontend/src/components/JoinedEvents')
 
 const Event = require('../models/eventModel')
 const User = require('../models/userModel')
+// const Joined = require('../models/joinedModel')
 
 // @desc    Get events
 // @route   GET /api/events
@@ -25,7 +27,6 @@ const getAllEvents = asyncHandler(async (req, res) =>{
 // @access  Private
 const setEvent = asyncHandler(async (req, res) => {
   
-  // const { title, city, address, date, time, description, participants } = req.body
   if (!req.body.title && !req.body.city) {
     res.status(400)
     throw new Error('Please add all field')
@@ -43,7 +44,7 @@ const setEvent = asyncHandler(async (req, res) => {
 
   res.status(200).json(event)
 })
-
+ 
 // @desc    Update event
 // @route   PUT /api/events/:id
 // @access  Private
@@ -66,19 +67,11 @@ const updateEvent = asyncHandler(async (req, res) => {
     res.status(401)
     throw new Error('User not authorized')
   }
-// router.route("/update/:id").put(updateEvent)
-// (req, res) => {
-//     Event.findByIdAndUpdate({_id:req.params.id}, {
-//       title:req.body.title, 
-//       description: req.body.description})
-//     })
-//       .then(doc => console.log(doc))
-//       .catch(err => console.log(err))
+
 
   const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
-    // title: req.body.title, 
-    // description: req.body.description
+ 
   })
 
   res.status(200).json(updatedEvent)
@@ -112,10 +105,25 @@ const deleteEvent = asyncHandler(async (req, res) => {
   res.status(200).json({ id: req.params.id })
 })
 
+// const joinedEvents = asyncHandler(async (req, res) => {
+//   const events = await Joined.find(
+//     // { user: req.user.id }
+//     )
+
+//   res.status(200).json(joinedEvents)
+// })
+
+// app.get("/joined", (req, res)=>{
+//   Joined.find()
+//   .then(items => res.json(items))
+//   .catch(err => console.log(err))
+// })
+
 module.exports = {
   getAllEvents,
   getEvents,
   setEvent,
   updateEvent,
   deleteEvent,
+  
 }

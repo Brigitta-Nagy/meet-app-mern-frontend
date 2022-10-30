@@ -3,7 +3,8 @@ import joinPic from "../static/hands-on-table-min.jpg"
 import findPic from "../static/child-draw-colorful-min.jpg"
 import createPic from "../static/pencils-min.jpg"
 import { BiUser } from 'react-icons/bi'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
+
 
 function Landing() {
   return (
@@ -35,6 +36,7 @@ function Landing() {
           </Link>
     </>
   )
+  
 }
 
 export default Landing

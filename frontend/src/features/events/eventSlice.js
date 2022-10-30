@@ -46,6 +46,23 @@ export const getEvents = createAsyncThunk(
   }
 )
 //
+// export const joinedEvents = createAsyncThunk(
+//   'events/joined',
+//   async (_, thunkAPI) => {
+//     try {
+//       const token = thunkAPI.getState().auth.user.token
+//       return await eventService.joinedEvents(token)
+//     } catch (error) {
+//       const message =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.message ||
+//         error.toString()
+//       return thunkAPI.rejectWithValue(message)
+//     }
+//   }
+// )
 
 
 // Delete event

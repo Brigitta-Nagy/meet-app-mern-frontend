@@ -8,6 +8,8 @@ const connectDB = require("./config/db");
 const port = process.env.PORT || 5000;
 const mongoose = require("mongoose")
 const Event = require("./models/eventModel")
+const Joined = require("./models/joinedModel");
+const { userInfo } = require("os");
 // mongoose.connect("mongodb://localhost:5000", {
 //   useNewUrlParser: "true",
 //   useUnifiedTopology: "true"
@@ -22,6 +24,35 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/events", require("./routes/eventRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
+
+// app.post("/joined", (req, res) =>{
+//   Joined.create({
+//     title: req.body.title,
+//     city:req.body.city,
+//     address:req.body.address,
+//     date:req.body.date,
+//     time:req.body.time,
+//     participants:req.body.participants,
+//     description: req.body.description,
+//   })
+//   .then(doc => console.log(doc))
+//   .catch(err => console.log(err))
+//   })
+
+//   app.get("/joined", (req, res)=>{
+     
+//     Joined.find(
+//       //IF 
+//       // { user: req.user.id }
+//       )
+//     .then(items => {
+//       console.log("hey")
+//       res.json(items)})
+//     .catch(err => console.log(err))
+//   })
+
+
+
 
 app.put("/update/:id", (req, res) => {
   
@@ -42,6 +73,7 @@ app.put("/update/:id", (req, res) => {
   // Event.find({}, function (err, events) {
   //     console.log(events);
   // })
+
 });
 
   

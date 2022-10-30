@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API_URL = '/api/events/'
-
+//  const API_URL_JOINED = '/api/events/joined'
 // Create new event
 const createEvent = async (eventData, token) => {
   const config = {
@@ -28,7 +28,19 @@ const getEvents = async (token) => {
 
   return response.data
 }
+// Get joined events
+// const joinedEvents = async (token) => {
+//   const config = {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   }
 
+
+//   const response = await axios.get(API_URL_JOINED, config)
+
+//   return response.data
+// }
 // Delete event
 const deleteEvent = async (eventId, token) => {
   const config = {
@@ -52,11 +64,15 @@ const updateEvent = async (eventId, token) => {
 
   return response.data
 }
+// Create new event
+
 const eventService = {
   createEvent,
   getEvents,
   deleteEvent,
-  updateEvent
+  updateEvent, 
+  // joinedEvents
+  
 }
 
 export default eventService

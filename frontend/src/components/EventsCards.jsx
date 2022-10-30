@@ -1,14 +1,25 @@
 
 import {useEffect, useState} from "react"
 // import EventItem from "./EventItem"
-
+import axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Navigate, useNavigate } from "react-router-dom"
 
 function EventsCards({event}) {
+  const navigate = useNavigate()
   const [events, setEvents] = useState([])
   const [joinActive, setJoinActive] = useState(false)
   const [search, setSearch] = useState("")
   
+  const joined = event => {
+    // console.log('clicked :)');
+    event.currentTarget.classList.toggle('green');
+    if(event.currentTarget.innerHTML === 'Join') {
+      event.currentTarget.innerHTML = 'Joined';
+    } else {
+      event.currentTarget.innerHTML = 'Join';
+    }
+  }
 
   useEffect(() => {
     fetch('http://localhost:5000/api/events/events')
@@ -22,10 +33,17 @@ function EventsCards({event}) {
 
 
 
-  const handleClick = ()=>{
-    setJoinActive(!joinActive)
-    
-   }
+  const handleClick = (event)=>{
+     console.log(event)
+     
+    // setJoinActive(!joinActive)
+     axios.post("/joined", event)
+     .then((res) => {
+      
+      console.log(res)})
+     .catch((err) => console.log(err))
+     navigate("/dashboard")
+    }
   return(
     <div>
       <h3 className='m-3'>Events you can join :</h3>
@@ -43,10 +61,11 @@ function EventsCards({event}) {
             <p><strong>Where: </strong>{event.city}, {event.address}</p>
             <p>Description: {event.description}</p>
             <p>Max. participants:{event.participants} </p>
-            <button className="btn-me btn-block" 
-          onClick={() => handleClick(event._id)}
-          //  onClick={handleClick} className= {`btn-me btn-block ${joinActive} ? notJoin-button : "" `}
-          >{joinActive ? "Joined" : "Join"}</button>
+            <button className='btn-me btn-block' onClick={joined}
+             key = {event._id}
+          /* onClick={()=>joined(this)} */> 
+            {joinActive ? "Joined" : "Join"}
+            </button>
 
             </li>
           ))}
