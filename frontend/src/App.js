@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Landing from "./pages/Landing";
 import EventForm from "./components/EventForm";
 import Register from "./pages/Register";
+import Footer from "./components/Footer"
 // import EventsCards from "./components/EventsCards"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -25,6 +26,7 @@ function App() {
             <Route path='/create' element={<EventForm />} />
             {/* <Route path='/events' element={<EventsCards />} /> */}
           </Routes>
+          <Footer />
         </div>
       </Router>
       <ToastContainer />

@@ -1,12 +1,12 @@
 
 import {useEffect, useState} from "react"
 // import EventItem from "./EventItem"
-import axios from "axios"
+// import axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navigate, useNavigate } from "react-router-dom"
 
 function EventsCards({event}) {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [events, setEvents] = useState([])
   const [joinActive, setJoinActive] = useState(false)
   const [search, setSearch] = useState("")
@@ -33,17 +33,17 @@ function EventsCards({event}) {
 
 
 
-  const handleClick = (event)=>{
-     console.log(event)
+  // const handleClick = (event)=>{
+  //    console.log(event)
      
-    // setJoinActive(!joinActive)
-     axios.post("/joined", event)
-     .then((res) => {
+  //   // setJoinActive(!joinActive)
+  //    axios.post("/joined", event)
+  //    .then((res) => {
       
-      console.log(res)})
-     .catch((err) => console.log(err))
-     navigate("/dashboard")
-    }
+  //     console.log(res)})
+  //    .catch((err) => console.log(err))
+  //    navigate("/dashboard")
+  //   }
   return(
     <div>
       <h3 className='m-3'>Events you can join :</h3>
