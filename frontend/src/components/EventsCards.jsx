@@ -1,18 +1,28 @@
 
 import {useEffect, useState} from "react"
 // import EventItem from "./EventItem"
-// import axios from "axios"
+import axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navigate, useNavigate } from "react-router-dom"
 
 function EventsCards({event}) {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const [events, setEvents] = useState([])
   const [joinActive, setJoinActive] = useState(false)
   const [search, setSearch] = useState("")
   
-  const joined = event => {
+ 
+   const joined = event => {
     // console.log('clicked :)');
+    axios.post("/joined", events)
+     
+    .then((res) =>  console.log(res))
+
+    .catch((err) => console.log(err))
+      navigate("/dashboard")
+    
+  
+  
     event.currentTarget.classList.toggle('green');
     if(event.currentTarget.innerHTML === 'Join') {
       event.currentTarget.innerHTML = 'Joined';
@@ -42,7 +52,7 @@ function EventsCards({event}) {
       
   //     console.log(res)})
   //    .catch((err) => console.log(err))
-  //    navigate("/dashboard")
+    // navigate("/dashboard")
   //   }
   return(
     <div>
