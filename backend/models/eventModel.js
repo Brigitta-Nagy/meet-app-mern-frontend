@@ -39,11 +39,15 @@ const eventSchema = mongoose.Schema(
       type: Number, 
       // required: [true, 'Please add max. participants']
     },
+   joinedUsers:[{
+    joinedUsersId: {
+      type:String, 
+      required:false}}],
     },
-  
-  {
-    timestamps: true,
-  }
+
+      {
+        timestamps: true,
+      }
 )
 
 module.exports = mongoose.model('Event', eventSchema)

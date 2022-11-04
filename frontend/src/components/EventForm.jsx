@@ -122,7 +122,7 @@ function EventForm() {
             </textarea>
         </div>    
         <div className='form-group mb-5'>
-            <button className='btn-me btn-block' type='submit'>
+            <button className='btn-me btn-block' >
               Add Event
             </button>
             <button className='btn-me btn-block'

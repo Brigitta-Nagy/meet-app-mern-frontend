@@ -12,7 +12,9 @@ function Landing() {
     <div>
       <h3>How M-A-M works? </h3>
       </div>
-    <p>Meet new people who share your interests through online and in-person events. It’s free to create an account.</p>
+    <p className='h5 m-5'>Meet new people, share your interests through online and in-person events. <br />People who joined to M-A-M have fostered community, learned new skills, started businesses, and made life-long friends. <br/> Learn how.
+ 
+It’s free to create an account.</p>
     <div className='pic-container d-flex flex-row '>
       <div className='pic m-3'>
       <img className="pic-landing-page" src={joinPic} alt="join to m-a-m hands"/>

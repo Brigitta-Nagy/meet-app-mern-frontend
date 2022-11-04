@@ -42,11 +42,12 @@ function Dashboard() {
     <section className='heading'>
       <h2>Hello, {user.name}! </h2>
       {/* <Search /> */}
+      <h3>User{user._id}</h3>
     </section>
     <Container >
       <Row>
         <Col>
-          <EventsCards/>
+          <EventsCards userId={user._id}/>
          </Col>
         <Col>
           <section className='content col-sm m-5'>

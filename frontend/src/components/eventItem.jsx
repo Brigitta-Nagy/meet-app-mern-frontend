@@ -71,7 +71,7 @@ function EventItem({ event }) {
       <h4>When: {event.date}, {event.time}</h4>
       <p><strong>Where: </strong>{event.city}, {event.address}</p>
       <p>Description: {event.description}</p>
-      <p>Max. participants:{event.participants} </p>
+      <p>Max. participants: {event.participants} </p>
     
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
