@@ -10,8 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import "bootstrap/dist/css/bootstrap.min.css"
-// import JoinedEvents from '../components/JoinedEvents'
-
+import JoinedEventsNew from '../components/JoinedEventsNew'
 
 function Dashboard() {
   const navigate = useNavigate()
@@ -41,16 +40,14 @@ function Dashboard() {
     <>
     <section className='heading'>
       <h2>Hello, {user.name}! </h2>
-      {/* <Search /> */}
-      <h3>User{user._id}</h3>
     </section>
-    <Container >
+    <div>
       <Row>
-        <Col>
+        <Col className='col- container-me'>
           <EventsCards userId={user._id}/>
          </Col>
         <Col>
-          <section className='content col-sm m-5'>
+          <section className='col- container-me m-4'>
             {events.length > 0 ? (
               <div >
                 <h3 className='m-3'>Your events:</h3>
@@ -69,11 +66,11 @@ function Dashboard() {
              </div>
           </section>
         </Col>
-        {/* <Col>
-          <JoinedEvents/>
-         </Col> */}
+        <Col className='col- container-me m-4'>
+          <JoinedEventsNew userId={user._id}/>
+         </Col>
       </Row>
-    </Container>
+    </div>
 
   
   </>

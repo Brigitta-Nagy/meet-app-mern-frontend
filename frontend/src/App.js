@@ -9,14 +9,13 @@ import Landing from "./pages/Landing";
 import EventForm from "./components/EventForm";
 import Register from "./pages/Register";
 import Footer from "./components/Footer"
-// import EventsCards from "./components/EventsCards"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
    return (
     <>
     <Router>
-        <div className='container'>
+        <div>
           <Header />
           <Routes>
             <Route path='/' element={<Landing/>} />
@@ -34,28 +33,5 @@ function App() {
   
 )}
 export default App
-// //     <>
-// //     <Router>
-// //       <Navbar />
-   
-// //          <Routes>
-// //             <Route path='/' element ={<Home/>}/>
-// //         </Routes>
-// //         <Routes>
-// //             <Route path='/login' element ={<Login/>}/>
-// //         </Routes>
-// //         <Routes>
-// //             <Route path='/signup' element ={<Signup/>}/>
-// //         </Routes>
-// //         <Routes>
-// //             <Route path='/events' element ={<EventsPage/>}/>
-// //         </Routes>
-// //         <Routes>
-// //             <Route path='create' element ={<CreateEvent/>}/>
-// //         </Routes>
-// //      </Router>
-// //     </>
-// //   );
-//  }
 
 

@@ -38,6 +38,7 @@ function EventItem({ event }) {
         date: date,
         participants: participants,
         description: description,
+        
       };
     });
     handleShow();

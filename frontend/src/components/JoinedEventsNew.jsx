@@ -7,22 +7,20 @@ import { Navigate, useNavigate } from "react-router-dom"
 import EventForm from "./EventForm"
 
 
-function EventsCards({userId, event}) {
+function JoinedEventsNew({userId, event}) {
   const navigate = useNavigate()
   const [events, setEvents] = useState([])
   const [joinActive, setJoinActive] = useState(false)
   const [search, setSearch] = useState("")
   const [joinedUsers, setjoinedUsers] = useState()
-  // const [style, setStyle] = useState()
+  const [style, setStyle] = useState()
   
   // const maxPartRef = useRef()
-  // const changeStyle = () => {
-  //   console.log("you just clicked");
+  const changeStyle = () => {
+    console.log("you just clicked");
   
-  //   setStyle("btn-me");
-  // };
-  
- 
+    setStyle("btn-me");
+  }; 
 
   useEffect((event) => {
     fetch('http://localhost:5000/api/events/events')
@@ -35,7 +33,6 @@ function EventsCards({userId, event}) {
       })
       .catch(err => console.log(err))
   }, [])
-  
   
   const handleClick = (event) =>{
     console.log('User id: ' + userId);
@@ -50,7 +47,7 @@ function EventsCards({userId, event}) {
     .catch((err) => console.log(err))
     
     window.location.reload()
-    // changeStyle()
+    changeStyle()
     
     //   navigate("/dashboard")
     console.log(`event:${event._id}, user: ${userId}, joinedUsers: ${event.joinedUsers.length}`)
@@ -71,7 +68,7 @@ function EventsCards({userId, event}) {
     .catch((err) => console.log(err))
     
     window.location.reload()
-    // changeStyle()
+    changeStyle()
     
     //   navigate("/dashboard")
     console.log(`event:${event._id}, user: ${userId}, joinedUsers: ${event.joinedUsers.length}`)
@@ -95,14 +92,12 @@ function EventsCards({userId, event}) {
   //   }
   return(
     <div>
-      <h3 className='m-3'>Events you can join:</h3>
-        <input type="text" placeholder="Search by city..." onChange={e=>setSearch(e.target.value)} className="searchBar"/>
+      <h3 className='m-3'>Events you've joined:</h3>
+        {/* <input type="text" placeholder="Search by city..." onChange={e=>setSearch(e.target.value)} className="searchBar"/> */}
       <div className='event '>
         <ul >
-        {events.filter((event)=>{
-          return search.toUpperCase() === '' ? event : event.city.toUpperCase().includes(search.toUpperCase());
-        }).filter((event) => {
-          return !event.joinedUsers.includes(userId);
+          {events.filter((event) => {
+          return event.joinedUsers.includes(userId);
         })
         .map((event) => 
           
@@ -114,7 +109,7 @@ function EventsCards({userId, event}) {
             {/* <p >Max. participants: {event.participants}</p>
             <p >Participants so far: {event.joinedUsers.length}</p> */}
             
-            <p >{event.joinedUsers.length >= event.participants ? '' : `Spaces left: ${event.participants - event.joinedUsers.length}`}</p>
+            <p >Spaces left: {event.participants - event.joinedUsers.length}</p>
             {/* <p>{event.joinedUsers.includes(userId) ? 'true' : 'false'}</p> */}
             <p><strong>{event.joinedUsers.length >= event.participants ? 'This event is not accepting any more participants. Check back later' : ''}</strong></p>
             <div>
@@ -135,5 +130,5 @@ function EventsCards({userId, event}) {
 
 }
 
-export default EventsCards
+export default JoinedEventsNew
 

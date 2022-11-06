@@ -1,6 +1,6 @@
 const express = require('express')
-// const { default: JoinedEvents } = require('../../frontend/src/components/JoinedEvents')
 const router = express.Router()
+
 const {
   getAllEvents,
   getEvents,

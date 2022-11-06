@@ -2,14 +2,13 @@ const asyncHandler = require('express-async-handler')
 
 const Event = require('../models/eventModel')
 const User = require('../models/userModel')
-// const Joined = require('../models/joinedModel')
+
 
 // @desc    Get events
 // @route   GET /api/events
 // @access  Private
 const getEvents = asyncHandler(async (req, res) => {
   const events = await Event.find({ user: req.user.id })
-
   res.status(200).json(events)
 })
 
@@ -18,7 +17,6 @@ const getEvents = asyncHandler(async (req, res) => {
 // @access  Public
 const getAllEvents = asyncHandler(async (req, res) =>{
   const allEvents = await Event.find()
-
   res.status(200).json(allEvents)
 })
 // @desc    Set event
@@ -39,7 +37,6 @@ const setEvent = asyncHandler(async (req, res) => {
     time: req.body.time,
     description:req.body.description,
     participants: req.body.participants,
-    joinedUsers: newJoinedUser,
     user: req.user.id,
   })
   

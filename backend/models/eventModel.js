@@ -37,7 +37,7 @@ const eventSchema = mongoose.Schema(
     },
     participants: {
       type: Number, 
-      // required: [true, 'Please add max. participants']
+      required: [true, 'Please add max. participants']
     },
    joinedUsers:[String]
     },

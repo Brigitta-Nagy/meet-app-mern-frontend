@@ -6,14 +6,12 @@ const cors = require("cors");
 const { errorHandler } = require("./middleware/errorMiddleware");
 const connectDB = require("./config/db");
 const port = process.env.PORT || 5000;
-const mongoose = require("mongoose")
-const Event = require("./models/eventModel")
-const User = require("./models/userModel")
+const mongoose = require("mongoose");
+const Event = require("./models/eventModel");
+const User = require("./models/userModel");
 const Joined = require("./models/joinedModel");
 const { userInfo } = require("os");
 const { db } = require("./models/eventModel");
-
-
 
 // mongoose.connect("mongodb://localhost:5000", {
 //   useNewUrlParser: "true",
@@ -30,7 +28,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/events", require("./routes/eventRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 
-
 // app.post("/joined", (req, res) =>{
 //   Joined.create({
 //     title: req.body.title,
@@ -46,9 +43,9 @@ app.use("/api/users", require("./routes/userRoutes"));
 //   })
 
 //   app.get("/joined", (req, res)=>{
-     
+
 //     Joined.find(
-//       //IF 
+//       //IF
 //       // { user: req.user.id }
 //       )
 //     .then(items => {
@@ -57,62 +54,80 @@ app.use("/api/users", require("./routes/userRoutes"));
 //     .catch(err => console.log(err))
 //   })
 
-
 // app.post("participant", (req, res)=>{
 //   console.log(req.body)
 // })
 
 app.put("/update/:id", (req, res) => {
   // const newJoinedUser = User.email
-  Event.findByIdAndUpdate(req.params.id,
-    { title: req.body.title,
-      city:req.body.city,
-      address:req.body.address,
-      date:req.body.date,
-      time:req.body.time,
-      participants:req.body.participants,
-      description: req.body.description,
-      joinedUsers: newJoinedUser
-    }, 
+  Event.findByIdAndUpdate(
+    req.params.id,
+    {
+      title: req.body.title,
+      city: req.body.city,
+      address: req.body.address,
+      date: req.body.date,
+      time: req.body.time,
+      participants: req.body.participants,
+      description: req.body.description
+    }
     //{
     //     $push: {
     //  joinedUsers:newJoinedUser
 
-   // } } 
-    )
-  
-  .then((doc) => {
-    console.log(doc)
-    }
-    )
-  .catch((err) => console.log(err));
+    // } }
+  )
+
+    .then((doc) => {
+      console.log(doc);
     })
+    .catch((err) => console.log(err));
+});
 
 //});
 // app.put(`/update/${Event._id}`, (req, res) => {
 // console.log(req.params)
 // })
-  
-app.put("/participant/:id", (req, res) => {
-  const newJoinedUser = "55"
-  Event.findByIdAndUpdate(req.params.id,
-    {
-         $push: {
-      joinedUsers:newJoinedUser
 
-    } } 
-    )
-  
-  .then((doc) => {
-    console.log(doc)
-       
-    }
-    )
-  .catch((err) => console.log(err));
+app.put("/participant/:queryString", (req, res) => {
+  // const newJoinedUser = "55";
+
+  let eventId = req.params.queryString.split("-")[0];
+  let userId = req.params.queryString.split("-")[1];
+
+  const newJoinedUser = userId;
+
+  Event.findByIdAndUpdate(eventId, {
+    $addToSet: {
+      joinedUsers: newJoinedUser,
+    },
+  })
+
+    .then((doc) => {
+      console.log(doc);
     })
+    .catch((err) => console.log(err));
+});
 
+app.put("/noparticipant/:queryString", (req, res) => {
+  // const newJoinedUser = "55";
 
- 
+  let eventId = req.params.queryString.split("-")[0];
+  let userId = req.params.queryString.split("-")[1];
+
+  const newJoinedUser = userId;
+
+  Event.findByIdAndUpdate(eventId, {
+    $pull: {
+      joinedUsers: newJoinedUser,
+    },
+  })
+
+    .then((doc) => {
+      console.log(doc);
+    })
+    .catch((err) => console.log(err));
+});
 
 // Serve frontend
 if (process.env.NODE_ENV === "production") {

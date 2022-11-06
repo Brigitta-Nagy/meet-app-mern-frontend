@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createEvent } from '../features/events/eventSlice'
 import { useNavigate } from 'react-router-dom'
+import axios from "axios"
+// import eventModel from '../../../backend/models/eventModel'
 
 
 function EventForm() {
@@ -14,7 +16,8 @@ function EventForm() {
   //   time: '',
   //   description:'', 
   //   participants:'' 
-  //})
+  // })
+
   const [title, setTitle] = useState('')
   const [city, setCity] = useState('')
   const [address, setAddress] = useState('')
@@ -23,6 +26,7 @@ function EventForm() {
   const [participants, setParticipants] = useState('')
   const [description, setDescription] = useState('')
   const [joinedUsers, setJoinedUsers] = useState('')
+
   const dispatch = useDispatch()
 
   // const onChange = (e) =>{
@@ -39,22 +43,25 @@ function EventForm() {
   // const { title,  city, address, date, time, description,  participants} = event
   const onSubmit = (e) => {
     e.preventDefault();
-  //  axios.post( {
-  //   title: event.title, 
-  //   city:event.city, 
-  //   address:event.address, 
-  //   date:event.date,
-  //   time:event.time,
-  //   description:event.description, 
-  //   participants:event.participants
+
+    // console.log('Event: ' + event);
+
+  //  axios.post('/', {
+  //   title: title, 
+  //   city: city, 
+  //   address: address, 
+  //   date: date,
+  //   time: time,
+  //   description: description, 
+  //   participants: participants
   //  })
   //  .then(res=> {
   //   console.log(res.data)
   //  })
-     
-     dispatch(createEvent({ title, city, address, date, time, participants, description, joinedUsers }))
+
+     dispatch(createEvent({ title, city, address, date, time, participants, description}))
     
-     navigate("/dashboard")
+    navigate("/dashboard")
   }
 
   return (
@@ -123,7 +130,7 @@ function EventForm() {
             </textarea>
         </div>    
         <div className='form-group mb-5'>
-            <button className='btn-me btn-block' >
+            <button className='btn-me btn-block' type="submit" >
               Add Event
             </button>
             <button className='btn-me btn-block'
