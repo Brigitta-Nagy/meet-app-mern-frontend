@@ -1,5 +1,4 @@
 const asyncHandler = require('express-async-handler')
-// const { default: JoinedEvents } = require('../../frontend/src/components/JoinedEvents')
 
 const Event = require('../models/eventModel')
 const User = require('../models/userModel')
@@ -31,6 +30,7 @@ const setEvent = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error('Please add all field')
   }
+  
   const event = await Event.create({
     title: req.body.title,
     city:req.body.city, 
@@ -39,9 +39,10 @@ const setEvent = asyncHandler(async (req, res) => {
     time: req.body.time,
     description:req.body.description,
     participants: req.body.participants,
+    joinedUsers: newJoinedUser,
     user: req.user.id,
   })
-
+  
   res.status(200).json(event)
 })
  
@@ -63,10 +64,10 @@ const updateEvent = asyncHandler(async (req, res) => {
   }
 
   // Make sure the logged in user matches the event user
-  if (event.user.toString() !== req.user.id) {
-    res.status(401)
-    throw new Error('User not authorized')
-  }
+  // if (event.user.toString() !== req.user.id) {
+  //   res.status(401)
+  //   throw new Error('User not authorized')
+  // }
 
 
   const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body, {
@@ -95,10 +96,10 @@ const deleteEvent = asyncHandler(async (req, res) => {
   }
 
   // Make sure the logged in user matches the event user
-  if (event.user.toString() !== req.user.id) {
-    res.status(401)
-    throw new Error('User not authorized')
-  }
+  // if (event.user.toString() !== req.user.id) {
+  //   res.status(401)
+  //   throw new Error('User not authorized')
+  // }
 
   await event.remove()
 

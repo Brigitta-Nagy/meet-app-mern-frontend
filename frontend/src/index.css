@@ -11,6 +11,7 @@ body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
   background-color: whitesmoke;
+  user-select: none;
 }
 
 a, h1, .login-btn{

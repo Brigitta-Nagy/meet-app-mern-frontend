@@ -11,7 +11,7 @@ const eventSchema = mongoose.Schema(
     title: {
       type: String, 
       uppercase: true,
-      required: [true, 'Please add title']
+      required: [false, 'Please add title']
     },
     city: {
       type: String, 
@@ -21,11 +21,11 @@ const eventSchema = mongoose.Schema(
     }, 
     address: {
       type: String, 
-      required: [true, 'Please add exact address']
+      required: [false, 'Please add exact address']
       }, 
     date: {
       type: String, 
-      required: true
+      required: false
     },
     time: {
       type: String, 
@@ -39,10 +39,7 @@ const eventSchema = mongoose.Schema(
       type: Number, 
       // required: [true, 'Please add max. participants']
     },
-   joinedUsers:[{
-    joinedUsersId: {
-      type:String, 
-      required:false}}],
+   joinedUsers:[String]
     },
 
       {

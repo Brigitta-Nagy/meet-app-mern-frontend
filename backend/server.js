@@ -8,8 +8,13 @@ const connectDB = require("./config/db");
 const port = process.env.PORT || 5000;
 const mongoose = require("mongoose")
 const Event = require("./models/eventModel")
+const User = require("./models/userModel")
 const Joined = require("./models/joinedModel");
 const { userInfo } = require("os");
+const { db } = require("./models/eventModel");
+
+
+
 // mongoose.connect("mongodb://localhost:5000", {
 //   useNewUrlParser: "true",
 //   useUnifiedTopology: "true"
@@ -24,6 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/events", require("./routes/eventRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
+
 
 // app.post("/joined", (req, res) =>{
 //   Joined.create({
@@ -52,10 +58,12 @@ app.use("/api/users", require("./routes/userRoutes"));
 //   })
 
 
-
+// app.post("participant", (req, res)=>{
+//   console.log(req.body)
+// })
 
 app.put("/update/:id", (req, res) => {
-  
+  // const newJoinedUser = User.email
   Event.findByIdAndUpdate(req.params.id,
     { title: req.body.title,
       city:req.body.city,
@@ -64,19 +72,44 @@ app.put("/update/:id", (req, res) => {
       time:req.body.time,
       participants:req.body.participants,
       description: req.body.description,
-  }
+      joinedUsers: newJoinedUser
+    }, 
+    //{
+    //     $push: {
+    //  joinedUsers:newJoinedUser
 
-)
-  .then((doc) => console.log(doc))
-  .catch((err) => console.log(err));
-
-  // Event.find({}, function (err, events) {
-  //     console.log(events);
-  // })
-
-});
-
+   // } } 
+    )
   
+  .then((doc) => {
+    console.log(doc)
+    }
+    )
+  .catch((err) => console.log(err));
+    })
+
+//});
+// app.put(`/update/${Event._id}`, (req, res) => {
+// console.log(req.params)
+// })
+  
+app.put("/participant/:id", (req, res) => {
+  const newJoinedUser = "55"
+  Event.findByIdAndUpdate(req.params.id,
+    {
+         $push: {
+      joinedUsers:newJoinedUser
+
+    } } 
+    )
+  
+  .then((doc) => {
+    console.log(doc)
+       
+    }
+    )
+  .catch((err) => console.log(err));
+    })
 
 
  

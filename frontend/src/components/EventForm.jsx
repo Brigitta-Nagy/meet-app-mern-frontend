@@ -22,6 +22,7 @@ function EventForm() {
   const [time, setTime] = useState('')
   const [participants, setParticipants] = useState('')
   const [description, setDescription] = useState('')
+  const [joinedUsers, setJoinedUsers] = useState('')
   const dispatch = useDispatch()
 
   // const onChange = (e) =>{
@@ -51,7 +52,7 @@ function EventForm() {
   //   console.log(res.data)
   //  })
      
-     dispatch(createEvent({ title, city, address, date, time, participants, description }))
+     dispatch(createEvent({ title, city, address, date, time, participants, description, joinedUsers }))
     
      navigate("/dashboard")
   }
