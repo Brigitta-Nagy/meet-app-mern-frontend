@@ -56,7 +56,7 @@ function Login() {
 
   return (
     <>
-      <section className='heading'>
+      <section className='heading container-landing '>
         <h1>
           <BiLogIn /> Login
         </h1>

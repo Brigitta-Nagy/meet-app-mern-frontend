@@ -2,23 +2,27 @@ import React from 'react'
 import joinPic from "../static/hands-on-table-min.jpg"
 import findPic from "../static/child-draw-colorful-min.jpg"
 import createPic from "../static/pencils-min.jpg"
+import accountPic from "../static/create-account.jpg"
 import { BiUser } from 'react-icons/bi'
 import { Link} from 'react-router-dom'
 
 
 function Landing() {
   return (
-    <>
-    <div>
+    <div className='container-landing'>
+    <div className='paragraph-landing'>
       <h3>How M-A-M works? </h3>
+       <p className='h5 m-5'>Meet new people, share your interests through online and in-person events. <br />People who joined to M-A-M have fostered community, learned new skills, started businesses, and made life-long friends. <br/> Learn how. It’s free to create an account.</p>
+    </div>
+    <div className=' d-flex flex-row landing-pics-container'>
+    <div className='pic m-3'>
+      <img className="pic-landing-page" src={accountPic} alt="create to m-a-m hands"/>
+        <h3>CREATE an account</h3>
+        <p>It's easy, quick and free</p>
       </div>
-    <p className='h5 m-5'>Meet new people, share your interests through online and in-person events. <br />People who joined to M-A-M have fostered community, learned new skills, started businesses, and made life-long friends. <br/> Learn how.
- 
-It’s free to create an account.</p>
-    <div className='pic-container d-flex flex-row '>
       <div className='pic m-3'>
       <img className="pic-landing-page" src={joinPic} alt="join to m-a-m hands"/>
-        <h3>JOIN a group</h3>
+        <h3>MAKE friends</h3>
         <p>Meet others with same interests, find friends</p>
       </div>
       <div className='pic m-3'>
@@ -28,7 +32,7 @@ It’s free to create an account.</p>
       </div>
       <div className='pic m-3'>
       <img className="pic-landing-page" src={findPic} alt="join to m-a-m hands"/>
-        <h3>FIND an event</h3>
+        <h3>JOIN an event</h3>
         <p>Find an event about any topic, online or in-person</p>
       </div>
  
@@ -36,7 +40,7 @@ It’s free to create an account.</p>
           <Link to='/register' className='login-btn btn-me mt-5'>
                 <BiUser /> Create an account
           </Link>
-    </>
+    </div>
   )
   
 }

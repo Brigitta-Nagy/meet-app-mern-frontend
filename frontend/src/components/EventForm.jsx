@@ -60,12 +60,13 @@ function EventForm() {
   //  })
 
      dispatch(createEvent({ title, city, address, date, time, participants, description}))
-    
-    navigate("/dashboard")
+     navigate("/dashboard")
+     window.location.reload()
+
   }
 
   return (
-    <section className='form'>
+    <section className='form container-landing'>
       <form onSubmit={onSubmit}> 
         <div className='form-group'>
           <h2 className='mb-5'>Create an event</h2>

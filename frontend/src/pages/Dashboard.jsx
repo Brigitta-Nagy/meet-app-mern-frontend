@@ -38,16 +38,17 @@ function Dashboard() {
 
   return (
     <>
-    <section className='heading'>
+    <section className='heading container-landing '>
       <h2>Hello, {user.name}! </h2>
     </section>
     <div>
       <Row>
-        <Col className='col- container-me'>
+        <Col className='col- container-landing'>
           <EventsCards userId={user._id}/>
          </Col>
         <Col>
-          <section className='col- container-me m-4'>
+        
+          <section className='col- container-landing'>
             {events.length > 0 ? (
               <div >
                 <h3 className='m-3'>Your events:</h3>
@@ -57,8 +58,9 @@ function Dashboard() {
                 ))}
               </div>
             ) : (
-              <h3>You have not shared any events</h3>
+              <h4>You have not shared any events</h4>
             )}
+           
             <div className='form-group '>
               <button className='btn-me btn-block mt-5' onClick={()=>navigate('/create')}>
                   Create on other event
@@ -66,9 +68,9 @@ function Dashboard() {
              </div>
           </section>
         </Col>
-        <Col className='col- container-me m-4'>
+        <Col className='col- container-landing'>
           <JoinedEventsNew userId={user._id}/>
-         </Col>
+        </Col>
       </Row>
     </div>
 

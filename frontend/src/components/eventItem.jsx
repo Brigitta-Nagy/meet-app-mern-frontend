@@ -68,10 +68,10 @@ function EventItem({ event }) {
 
   return (
     <div className='event'>
-      <h3>{event.title}</h3>
-      <h4>When: {event.date}, {event.time}</h4>
-      <p><strong>Where: </strong>{event.city}, {event.address}</p>
-      <p>Description: {event.description}</p>
+      <h5>{event.title}</h5>
+      <p className="mb-0">When: {event.date}, {event.time}</p>
+      <p className="mb-0"><strong>Where: </strong>{event.city}, {event.address}</p>
+      <p className="mb-0">Description: {event.description}</p>
       <p>Max. participants: {event.participants} </p>
     
       <Modal show={show} onHide={handleClose}>

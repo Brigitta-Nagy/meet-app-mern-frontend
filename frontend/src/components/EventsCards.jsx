@@ -94,11 +94,11 @@ function EventsCards({userId, event}) {
     // navigate("/dashboard")
   //   }
   return(
-    <div>
+    <div className="container-landing ">
       <h3 className='m-3'>Events you can join:</h3>
         <input type="text" placeholder="Search by city..." onChange={e=>setSearch(e.target.value)} className="searchBar"/>
-      <div className='event '>
-        <ul >
+      <div>
+        <ul>
         {events.filter((event)=>{
           return search.toUpperCase() === '' ? event : event.city.toUpperCase().includes(search.toUpperCase());
         }).filter((event) => {
@@ -106,19 +106,19 @@ function EventsCards({userId, event}) {
         })
         .map((event) => 
           
-          <li className="m-2" key={event._id}>
-            <h3>{event.title}</h3>
-            <h4 >When: {event.date}, {event.time}</h4>
-            <p><strong>Where: </strong>{event.city}, {event.address}</p>
-            <p>Description: {event.description}</p>
+          <li className="m-2 event" key={event._id}>
+            <h5>{event.title}</h5>
+            <p className="mb-0"><strong>When: </strong> {event.date}, {event.time}</p>
+            <p className="mb-0"><strong>Where: </strong>{event.city}, {event.address}</p>
+            <p className="mb-0">Description: {event.description}</p>
             {/* <p >Max. participants: {event.participants}</p>
             <p >Participants so far: {event.joinedUsers.length}</p> */}
             
             <p >{event.joinedUsers.length >= event.participants ? '' : `Spaces left: ${event.participants - event.joinedUsers.length}`}</p>
             {/* <p>{event.joinedUsers.includes(userId) ? 'true' : 'false'}</p> */}
-            <p><strong>{event.joinedUsers.length >= event.participants ? 'This event is not accepting any more participants. Check back later' : ''}</strong></p>
+            <h5><strong>{event.joinedUsers.length >= event.participants ? 'This event is not accepting any more participants. Check back later' : ''}</strong></h5>
             <div>
-            <button className={`test btn-me btn-block ${event.joinedUsers.includes(userId) ? 'hidden' : 'shown'} ${event.joinedUsers.length >= event.participants ? 'unclickable' : ''}`} onClick={(() =>handleClick(event, event._id, userId))} >JOIN</button>
+            <button className={`btn-me btn-block ${event.joinedUsers.includes(userId) ? 'hidden' : 'shown'} ${event.joinedUsers.length >= event.participants ? 'unclickable' : ''}`} onClick={(() =>handleClick(event, event._id, userId))} >JOIN</button>
             <button className={`test btn-me btn-block ${event.joinedUsers.includes(userId) ? 'shown' : 'hidden'}`} onClick={(() =>handleUnclick(event, event._id, userId))} >UNJOIN</button>
            </div>
            
