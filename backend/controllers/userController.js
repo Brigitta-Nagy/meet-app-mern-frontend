@@ -8,7 +8,7 @@ const User = require('../models/userModel')
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body
-
+  const regularExpression  = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
   if (!name || !email || !password) {
     res.status(400)
     throw new Error('Please add all fields')
@@ -21,7 +21,10 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error('User already exists')
   }
-
+  if(!regularExpression.test(password)) {
+    res.status(400)
+    throw new Error('password should contain at least one number and one special character of minimum 6 characters')
+}
   // Hash password
   const salt = await bcrypt.genSalt(10)
   const hashedPassword = await bcrypt.hash(password, salt)
