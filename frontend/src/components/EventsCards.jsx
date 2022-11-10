@@ -106,7 +106,7 @@ function EventsCards({userId, event}) {
         })
         .map((event) => 
           
-          <li className="m-2 event" key={event._id}>
+          <li className="event" key={event._id}>
             <h5>{event.title}</h5>
             <p className="mb-0"><strong>When: </strong> {event.date}, {event.time}</p>
             <p className="mb-0"><strong>Where: </strong>{event.city}, {event.address}</p>

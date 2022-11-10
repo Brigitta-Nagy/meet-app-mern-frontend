@@ -15,26 +15,30 @@ function Landing() {
        <p className='h5 m-5'>Meet new people, share your interests through online and in-person events. <br />People who joined to M-A-M have fostered community, learned new skills, started businesses, and made life-long friends. <br/> Learn how. It’s free to create an account.</p>
     </div>
     <div className=' d-flex flex-row landing-pics-container'>
-    <div className='pic m-3'>
-      <img className="pic-landing-page" src={accountPic} alt="create to m-a-m hands"/>
-        <h3>CREATE an account</h3>
-        <p>It's easy, quick and free</p>
+      <div className='landing-pics-first-two landing-pics-container'>
+         <div className='pic m-3'>
+            <img className="pic-landing-page" src={accountPic} alt="create to m-a-m hands"/>
+            <h3>CREATE an account</h3>
+            <p>It's easy, quick and free</p>
+         </div>
+         <div className='pic m-3'>
+            <img className="pic-landing-page" src={joinPic} alt="join to m-a-m hands"/>
+            <h3>MAKE friends</h3>
+            <p>Meet others with same interests, find friends</p>
+        </div>
       </div>
-      <div className='pic m-3'>
-      <img className="pic-landing-page" src={joinPic} alt="join to m-a-m hands"/>
-        <h3>MAKE friends</h3>
-        <p>Meet others with same interests, find friends</p>
-      </div>
-      <div className='pic m-3'>
-      <img className="pic-landing-page" src={createPic} alt="join to m-a-m hands"/>
-        <h3>CREATE an event</h3>
-        <p>Start a group, make friends with publish and host an event</p>
-      </div>
-      <div className='pic m-3'>
-      <img className="pic-landing-page" src={findPic} alt="join to m-a-m hands"/>
-        <h3>JOIN an event</h3>
-        <p>Find an event about any topic, online or in-person</p>
-      </div>
+      <div className='landing-pics-sec-two landing-pics-container'>
+        <div className='pic m-3'>
+          <img className="pic-landing-page" src={createPic} alt="join to m-a-m hands"/>
+          <h3>CREATE an event</h3>
+         <p>Start a group, make friends with publish and host an event</p>
+         </div>
+       <div className='pic m-3'>
+          <img className="pic-landing-page" src={findPic} alt="join to m-a-m hands"/>
+           <h3>JOIN an event</h3>
+           <p>Find an event about any topic, online or in-person</p>
+        </div>
+        </div>
  
     </div >
           <Link to='/register' className='login-btn btn-me mt-5'>

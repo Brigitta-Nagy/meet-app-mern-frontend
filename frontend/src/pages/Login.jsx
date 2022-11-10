@@ -65,7 +65,7 @@ function Login() {
       </section>
 
       <section className='login-heading container'>
-        <form onSubmit={onSubmit} >
+        <form onSubmit={onSubmit}>
           <div className='form-group'>
             <input
               type='email'
@@ -90,8 +90,7 @@ function Login() {
           </div>
 
           <div className='form-group'>
-            <button type='submit' className='btn-me btn-block'>
-              Submit
+            <button type='submit' className='btn-me btn-block'>Login
             </button>
           </div>
         </form>

@@ -100,7 +100,7 @@ function JoinedEventsNew({userId, event}) {
           return event.joinedUsers.includes(userId);
         })
         .map((event) => 
-          
+        <div className="container-landing ">
           <li className="m-2 event" key={event._id}>
             <h4>{event.title}</h4>
             <p className="mb-0">When: {event.date}, {event.time}</p>
@@ -119,6 +119,7 @@ function JoinedEventsNew({userId, event}) {
            
 
             </li>
+            </div>
         )}
           </ul>
       

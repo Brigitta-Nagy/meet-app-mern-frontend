@@ -66,8 +66,8 @@ function EventForm() {
   }
 
   return (
-    <section className='form container-landing'>
-      <form onSubmit={onSubmit}> 
+    <section className='form container-create'>
+        <form onSubmit={onSubmit}> 
         <div className='form-group'>
           <h2 className='mb-5'>Create an event</h2>
             <input
@@ -120,7 +120,7 @@ function EventForm() {
           />
         </div>
         <div className='form-group'>
-            <textarea className="form-control" 
+            <textarea className="form-group"
               type = "textarea"
               name='description' 
               value={description} 
@@ -139,7 +139,7 @@ function EventForm() {
               > BACK
             </button>
         </div>
-      </form>
+    </form>
     </section>
   )
 }

@@ -144,7 +144,7 @@ function EventItem({ event }) {
       </Modal>
        {/* {events.map((event)=>{
           return( */}
-            <div className="d-flex flex-row justify-content-md-around">
+            <div className="d-flex flex-row justify-content-around">
             <button onClick={() => dispatch(deleteEvent(event._id))} className='btn-me mb-0'>
               Delete
             </button>
