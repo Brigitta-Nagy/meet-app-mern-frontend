@@ -321,3 +321,24 @@ button.unclickable{
   color: darkgray;
   pointer-events: none;
 }
+.event-ul{
+height: 600px;
+overflow-y: scroll;
+}
+.event-card{
+  width: 95%;
+}
+.delete-btn{
+  background-color: #ffff;
+  color: #844040;
+   border: 1px solid #844040; 
+}
+.dialog{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  
+
+}

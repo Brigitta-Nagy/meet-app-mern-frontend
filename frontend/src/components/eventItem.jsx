@@ -4,6 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import {useState, } from "react"
 import axios from "axios"
+import {toast} from "react-toastify"
 
 
 
@@ -43,7 +44,9 @@ function EventItem({ event }) {
     });
     handleShow();
   };
-
+function notify(){
+  toast("Are you sure?")
+}
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUpdatedEvent((prev) => {
@@ -69,7 +72,7 @@ function EventItem({ event }) {
   return (
     <div className='event'>
       <h5>{event.title}</h5>
-      <p className="mb-0">When: {event.date}, {event.time}</p>
+      <p className="mb-0"><strong>When: </strong> {event.date}, {event.time}</p>
       <p className="mb-0"><strong>Where: </strong>{event.city}, {event.address}</p>
       <p className="mb-0">Description: {event.description}</p>
       <p>Max. participants: {event.participants} </p>
@@ -145,7 +148,8 @@ function EventItem({ event }) {
        {/* {events.map((event)=>{
           return( */}
             <div className="d-flex flex-row justify-content-around">
-            <button onClick={() => dispatch(deleteEvent(event._id))} className='btn-me mb-0'>
+            <button onClick={() => { if (window.confirm("are you sure you wish to delete this event?")) dispatch(deleteEvent(event._id))}}
+              className='btn-me mb-0 delete-btn'>
               Delete
             </button>
             <button 
@@ -164,6 +168,8 @@ function EventItem({ event }) {
         )
       }
 
-
+    //   <button onClick={() => dispatch(deleteEvent(event._id))} className='btn-me mb-0 delete-btn'>
+    //   Delete
+    // </button>
 
 export default EventItem

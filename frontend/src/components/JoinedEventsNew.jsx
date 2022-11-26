@@ -94,7 +94,7 @@ function JoinedEventsNew({userId, event}) {
     <div>
       <h3 className='m-3'>Events you've joined:</h3>
         {/* <input type="text" placeholder="Search by city..." onChange={e=>setSearch(e.target.value)} className="searchBar"/> */}
-      <div>
+      <div className="event-ul">
         <ul >
           {events.filter((event) => {
           return event.joinedUsers.includes(userId);
@@ -103,7 +103,7 @@ function JoinedEventsNew({userId, event}) {
         <div className="container-landing ">
           <li className="m-2 event" key={event._id}>
             <h4>{event.title}</h4>
-            <p className="mb-0">When: {event.date}, {event.time}</p>
+            <p className="mb-0"><strong>When: </strong> {event.date}, {event.time}</p>
             <p className="mb-0"><strong>Where: </strong>{event.city}, {event.address}</p>
             <p className="mb-0">Description: {event.description}</p>
             {/* <p >Max. participants: {event.participants}</p>

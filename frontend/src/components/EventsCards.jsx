@@ -5,6 +5,7 @@ import axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navigate, useNavigate } from "react-router-dom"
 import EventForm from "./EventForm"
+// import { Scrollbars } from 'react-scroll'
 
 
 function EventsCards({userId, event}) {
@@ -97,8 +98,8 @@ function EventsCards({userId, event}) {
     <div className="container-landing ">
       <h3 className='m-3'>Events you can join:</h3>
         <input type="text" placeholder="Search by city..." onChange={e=>setSearch(e.target.value)} className="searchBar"/>
-      <div>
-        <ul>
+      <div className="event-ul">
+        <ul className="event-card">
         {events.filter((event)=>{
           return search.toUpperCase() === '' ? event : event.city.toUpperCase().includes(search.toUpperCase());
         }).filter((event) => {
