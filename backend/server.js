@@ -90,7 +90,7 @@ app.put("/update/:id", (req, res) => {
 // })
 
 app.put("/participant/:queryString", (req, res) => {
-  // const newJoinedUser = "55";
+
 
   let eventId = req.params.queryString.split("-")[0];
   let userId = req.params.queryString.split("-")[1];
@@ -110,7 +110,7 @@ app.put("/participant/:queryString", (req, res) => {
 });
 
 app.put("/noparticipant/:queryString", (req, res) => {
-  // const newJoinedUser = "55";
+ 
 
   let eventId = req.params.queryString.split("-")[0];
   let userId = req.params.queryString.split("-")[1];
