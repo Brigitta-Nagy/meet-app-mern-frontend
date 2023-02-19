@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3ec78b1f.css",
+    "main.js": "/static/js/main.9719b9c2.js",
+    "static/media/child-draw-colorful-min.jpg": "/static/media/child-draw-colorful-min.8ba3e90962a080654104.jpg",
+    "static/media/pencils-min.jpg": "/static/media/pencils-min.215a8797619d2adbef01.jpg",
+    "static/media/hands-on-table-min.jpg": "/static/media/hands-on-table-min.26c7d5f09f224cb4a54d.jpg",
+    "static/media/m-a-m-logo.png": "/static/media/m-a-m-logo.9be9e8c16d3bf644a575.png",
+    "index.html": "/index.html",
+    "main.3ec78b1f.css.map": "/static/css/main.3ec78b1f.css.map",
+    "main.9719b9c2.js.map": "/static/js/main.9719b9c2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3ec78b1f.css",
+    "static/js/main.9719b9c2.js"
+  ]
+}
